@@ -1,0 +1,4 @@
+arena Sphere 0,0,0 20
+shape ReuleauxTetrahedron 0,12,0 6,-3.46410161514,0 -6,-3.46410161514,0 0,7.73205080757,12
+0 1,1,1 true
+0 10,10,10 false

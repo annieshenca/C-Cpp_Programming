@@ -12,8 +12,8 @@
 
 #include "containable.h"
 #include "point.h"
-#include "line.h"
 #include "circle.h"
+#include "line.h"
 
 
 class RegularConvexPolygon : public Containable2D {

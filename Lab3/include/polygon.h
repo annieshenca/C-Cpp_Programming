@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2018 David C. Harrison. All right reserved.
  *
- * You may not use, distribute, publish, or modify this code without 
+ * You may not use, distribute, publish, or modify this code without
  * the express written permission of the copyright holder.
  */
 
@@ -12,8 +12,9 @@
 
 #include "containable.h"
 #include "point.h"
-#include "circle.h"
 #include "line.h"
+#include "circle.h"
+
 
 class RegularConvexPolygon : public Containable2D {
     private:

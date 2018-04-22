@@ -57,7 +57,6 @@ bool Circle::containedWithin(RegularConvexPolygon &polygon)
         if (Geom::intersects(edge, line))
             return false;
     }
-
     return true;
 }
 

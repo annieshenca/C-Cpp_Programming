@@ -1,12 +1,11 @@
 /*
  * Copyright (C) 2018 David C. Harrison. All right reserved.
  *
- * You may not use, distribute, publish, or modify this code without 
+ * You may not use, distribute, publish, or modify this code without
  * the express written permission of the copyright holder.
  */
 
 #include <iostream>
-
 #include "circle.h"
 #include "polygon.h"
 #include "geom.h"
@@ -34,7 +33,7 @@ void Circle::setRadius(double radius) {
 }
 
 /*
- * If distance between centers is less than difference between the radius of containing 
+ * If distance between centers is less than difference between the radius of containing
  * circle and the radius of this circle, this circle is not contained
  */
 bool Circle::containedWithin(Circle &circle) {
@@ -42,14 +41,14 @@ bool Circle::containedWithin(Circle &circle) {
 }
 
 /*
- * If circle intersects with any polygon edge, circle is not contained       
+ * If circle intersects with any polygon edge, circle is not contained
  * If line between centers intersects with any polygon edge, circle is not contained
  * Only other possibility is that the circle is contained
  */
-bool Circle::containedWithin(RegularConvexPolygon &polygon) 
+bool Circle::containedWithin(RegularConvexPolygon &polygon)
 {
     for (Line const &edge: polygon.edges()) {
-        if (Geom::intersects(edge, *this)) 
+        if (Geom::intersects(edge, *this))
             return false;
     }
 

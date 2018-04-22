@@ -15,13 +15,15 @@ PASS Squares-in-Circle
 PASS Squares-in-Circle
 PASS Squares-in-Circle
 PASS Squares-in-Circle
-PASS Squares-in-Circle
-PASS Squares-in-Circle
-PASS Squares-in-Circle
-PASS Squares-in-Circle
+PASS Hexagon-in-Circle
 ------
+PASS Circle-in-TriangleT
+PASS Circle-in-TriangleT
+PASS Circle-in-TriangleF
+PASS Circle-in-TriangleF
+FAIL Circle-in-Square
 ------
 ------
 
-               Tests:   20/ 20   100.0%
+               Tests:   21/ 22    95.0%
 

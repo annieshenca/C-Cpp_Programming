@@ -163,46 +163,46 @@ static void testCircleInsideHexa ()
 
 
 
-// static void testCirclesInsideSquare ()
-// {
-//     RegularConvexPolygon outer =
-//         RegularConvexPolygon({ Point2D( 6, 6),
-//             Point2D( 6,-6), Point2D(-6, 6), Point2D(-6,-6) });
-//
-//     for (int i = -1; i <= 1; i += 2) {
-//         Circle inner = Circle(Point2D(i*1.0,i*1.0), 3.0);
-//         results("Circle-in-Square", true, inner.containedWithin(outer));
-//     }
-//     Circle inner = Circle(Point2D(0.0,0.0), 2.0);
-//     results("Circle-in-Square", true, inner.containedWithin(outer));
-// }
-//
-// static void testSquaresInsideSquare()
-// {
-//     RegularConvexPolygon outer =
-//         RegularConvexPolygon({
-//             Point2D( 5, 5), Point2D( 5,-5),
-//             Point2D( 5, 5), Point2D(-5,-5) });
-//
-//     // for (int i = -1; i <= 1; i += 2) {
-//     //     for (int j = -1; j <= 1; j += 2) {
-//     //         RegularConvexPolygon inner =
-//     //             RegularConvexPolygon({
-//     //                 Point2D( i*3, j*6), Point2D( i*3,j*-6),
-//     //                 Point2D(i*-3, j*6), Point2D(i*-3,j*-6) });
-//     //
-//     //         //printVertices(inner);
-//     //         results("Squares-inside-Square", true, inner.containedWithin(outer));
-//     //     }
-//     // }
-//
-//     RegularConvexPolygon inner =
-//         RegularConvexPolygon({
-//             Point2D( 2, 1), Point2D( 2,-1),
-//             Point2D( 2, 1), Point2D(-2,-1) });
-//
-//     results("Squares-inside-Square", true, inner.containedWithin(outer));
-// }
+static void testCirclesInsideSquare ()
+{
+    RegularConvexPolygon outer =
+        RegularConvexPolygon({ Point2D( 6, 6),
+            Point2D( 6,-6), Point2D(-6, 6), Point2D(-6,-6) });
+
+    for (int i = -1; i <= 1; i += 2) {
+        Circle inner = Circle(Point2D(i*1.0,i*1.0), 3.0);
+        results("Circle-in-Square", true, inner.containedWithin(outer));
+    }
+    Circle inner = Circle(Point2D(0.0,0.0), 2.0);
+    results("Circle-in-Square", true, inner.containedWithin(outer));
+}
+
+static void testSquaresInsideSquare()
+{
+    RegularConvexPolygon outer =
+        RegularConvexPolygon({
+            Point2D( 5, 5), Point2D( 5,-5),
+            Point2D( 5, 5), Point2D(-5,-5) });
+
+    // for (int i = -1; i <= 1; i += 2) {
+    //     for (int j = -1; j <= 1; j += 2) {
+    //         RegularConvexPolygon inner =
+    //             RegularConvexPolygon({
+    //                 Point2D( i*3, j*6), Point2D( i*3,j*-6),
+    //                 Point2D(i*-3, j*6), Point2D(i*-3,j*-6) });
+    //
+    //         //printVertices(inner);
+    //         results("Squares-inside-Square", true, inner.containedWithin(outer));
+    //     }
+    // }
+
+    RegularConvexPolygon inner =
+        RegularConvexPolygon({
+            Point2D( 2, 1), Point2D( 2,-1),
+            Point2D( 2, 1), Point2D(-2,-1) });
+
+    results("Squares-inside-Square", true, inner.containedWithin(outer));
+}
 
 
 
@@ -238,11 +238,11 @@ int main(int argc, char *argv[])
 
     printf("------\n\n");
 
-    //testCirclesInsideSquare();
+    testCirclesInsideSquare();
 
     printf("------\n\n");
 
-    //testSquaresInsideSquare();
+    testSquaresInsideSquare();
     testCircleInsideHexa();
 
     printf("------\n");

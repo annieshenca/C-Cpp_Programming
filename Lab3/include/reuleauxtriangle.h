@@ -19,7 +19,7 @@ class ReuleauxTriangle : public Containable2D {
         std::vector<Point2D> vertices_;
 
     public:
-        ReuleauxTriangle(std::vector<Point2D> vertices);
+        ReuleauxTriangle(std::vector<Point2D> vertices[3]);
 
         std::vector<Point2D> vertices();
         std::vector<Line> edges();

@@ -9,6 +9,7 @@
 #include "circle.h"
 #include "polygon.h"
 #include "geom.h"
+#include "reuleauxtriangle.h"
 
 Circle::Circle(const Point2D &center, double radius) {
     setCenter(center);

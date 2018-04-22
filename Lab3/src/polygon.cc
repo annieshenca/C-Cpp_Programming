@@ -30,34 +30,43 @@ int RegularConvexPolygon::vertexCount() {
     return vertices_.size();
 }
 
+/*
+ * Polygon in C
+ */
 bool RegularConvexPolygon::containedWithin(Circle &circle) {
     // If any of the vertices are outside the circle.
     for (Point2D const &vertex : vertices()) {
         // Imported geom.h to be able to use it here.
         if ( Geom::distance(vertex, circle.center()) > circle.radius() )
             return false;
-
     }
     return true;
 }
 
+
+/*
+ * If any poly edge intersects with any polygon edge, poly is not contained.
+ * If line between centers intersects with any polygon edge, poly is not contained
+ * Only other possibility is that the poly is contained
+ */
 bool RegularConvexPolygon::containedWithin(RegularConvexPolygon &polygon) {
-    // If intersecting sides, return false.
-    for (Line const &edge: polygon.edges()) {
-        for (Line const &corner: this) {
-            if (Geom::intersects(edge, corner))
+    printf("fak 1\n");
+    for (Line const &edge : polygon.edges()) {
+        for (Line const &edge_inner : edges()) {
+            if (Geom::intersects(edge, edge_inner)) {
+                printf("lines intersected!!!\n");
                 return false;
+            }
         }
     }
 
-    // If any vertex is outside the range's vertices, return false.
-    // for (Line const &edge: polygon.edges()) {
-    //     if (edge.x > *this.x || edge.y > *this.y) {
-    //         return false;
-    //     }
-    // }
+    printf("fak 2\n");
+    Line line(Geom::center(polygon), Geom::center(*this)); // Centers of polygon
+    for (Line const &edge : polygon.edges()) {
+        if (Geom::intersects(edge, line))
+            return false;
+    }
 
-    // Else, return true.
     return true;
 }
 

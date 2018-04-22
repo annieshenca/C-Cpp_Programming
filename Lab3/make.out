@@ -1,4 +1,0 @@
-src/polygon.cc:47:32: error: invalid range expression of type 'RegularConvexPolygon *'; no viable 'begin' function available
-        for (Line const &corner: this) {
-                               ^ ~~~~
-1 error generated.

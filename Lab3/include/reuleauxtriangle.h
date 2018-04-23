@@ -16,13 +16,14 @@
 
 class ReuleauxTriangle : public Containable2D {
     private:
-        std::vector<Point2D> vertices_;
+        std::vector<Point2D> ver_;
 
     public:
-        ReuleauxTriangle(std::vector<Point2D> vertices);
+        //ReuleauxTriangle(std::vector<Point2D> vertices);
+        ReuleauxTriangle(Point2D vertices[3]);
 
-        std::vector<Point2D> vertices();
-        std::vector<Line> edges();
+        // std::vector<Point2D> vertices();
+        // std::vector<Line> edges();
         //std::vector<Circle>???;
 
         bool containedWithin(Circle &circle);

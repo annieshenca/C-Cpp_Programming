@@ -32,6 +32,7 @@ PASS Squares-inside-Square
 PASS Squares-inside-Square
 PASS Squares-inside-Square
 PASS Squares-inside-Square
+<<<<<<< HEAD
 PASS Circle-in-ReuleauxTriangleT
 PASS Circle-in-ReuleauxTriangleT
 PASS Circle-in-ReuleauxTriangleT
@@ -50,4 +51,8 @@ PASS ReuleauxTriangles-in-ReuleauxTriangle
 PASS ReuleauxTriangles-in-ReuleauxTriangle
 
                Tests:   49/ 49   100.0%
+=======
+
+               Tests:   33/ 33   100.0%
+>>>>>>> 0eebf37999142fa9d9fe05add86a3af88a8172e4
 

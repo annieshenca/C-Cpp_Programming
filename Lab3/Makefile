@@ -2,7 +2,7 @@
 #
 # Copyright (C) 2018 David C. Harrison. All right reserved.
 #
-# You may not use, distribute, publish, or modify this code without 
+# You may not use, distribute, publish, or modify this code without
 # the express written permission of the copyright holder.
 #
 #######################################################################
@@ -12,7 +12,7 @@ CC = g++ -std=c++17
 
 SRC=$(wildcard src/*.cc)
 
-bounds: $(SRC) 
+bounds: $(SRC)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS) 2>&1 | tee make.out
 
 check: bounds
@@ -20,9 +20,9 @@ check: bounds
 	@echo ""
 
 grade: clean bounds
-	@./grade.sh 
+	@./grade.sh
 
-comply: 
+comply:
 	@./comply.sh
 
 clean:

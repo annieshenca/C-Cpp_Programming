@@ -18,20 +18,36 @@ PASS Squares-in-Circle
 PASS Hexagon-in-Circle
 PASS Circle-in-TriangleT
 PASS Circle-in-TriangleT
+PASS Circle-in-TriangleT
+PASS Circle-in-TriangleT
 PASS Circle-in-TriangleF
 PASS Circle-in-TriangleF
-------
+PASS Circle-in-TriangleF
+PASS Circle-in-TriangleF
+PASS Circle-in-Hexagon
+PASS Circle-in-Hexagon
+PASS Circle-in-Hexagon
+PASS Circle-in-Hexagon
+PASS Squares-inside-Square
+PASS Squares-inside-Square
+PASS Squares-inside-Square
+PASS Squares-inside-Square
+PASS Circle-in-ReuleauxTriangleT
+PASS Circle-in-ReuleauxTriangleT
+PASS Circle-in-ReuleauxTriangleT
+PASS Circle-in-ReuleauxTriangleT
+PASS Circle-in-ReuleauxTriangleF
+PASS Circle-in-ReuleauxTriangleF
+PASS Circle-in-ReuleauxTriangleF
+PASS Circle-in-ReuleauxTriangleF
+PASS Triangles-in-ReuleauxTriangle
+PASS Triangles-in-ReuleauxTriangle
+PASS Triangles-in-ReuleauxTriangle
+PASS Triangles-in-ReuleauxTriangle
+PASS ReuleauxTriangles-in-ReuleauxTriangle
+PASS ReuleauxTriangles-in-ReuleauxTriangle
+PASS ReuleauxTriangles-in-ReuleauxTriangle
+PASS ReuleauxTriangles-in-ReuleauxTriangle
 
-FAIL Circle-in-Square
-FAIL Circle-in-Square
-FAIL Circle-in-Square
-------
-
-fak 1
-lines intersected!!!
-FAIL Squares-inside-Square
-FAIL Circle-in-Hexagon
-------
-
-               Tests:   21/ 26    80.0%
+               Tests:   49/ 49   100.0%
 

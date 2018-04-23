@@ -60,7 +60,7 @@ bool RegularConvexPolygon::containedWithin(RegularConvexPolygon &polygon) {
     for (Line const &edge : polygon.edges()) {
         for (Line const &inner : edges()) {
             if (Geom::intersects(edge, inner)) {
-                printf("lines intersected!!!\n");
+                //printf("lines intersected!!!\n");
                 return false;
             }
         }

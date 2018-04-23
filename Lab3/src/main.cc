@@ -32,7 +32,7 @@ static void results (const char *msg, bool expected, bool got)
 //     }
 //     cout << endl;
 // }
-
+//
 // static void printCenter (Circle &circle) {
 //     Point2D const &center : circle.center();
 //     //printf("(%3.lf)", circle.center());
@@ -130,8 +130,10 @@ static void testCirclesInsideTriangleT()
             Point2D(-10,-6), Point2D(10,-6) });
 
     for (int i = -1; i <= 1; i += 2) {
-        Circle inner = Circle(Point2D(i*1.0,i*1.0), 3.0);
-        results("Circle-in-TriangleT", true, inner.containedWithin(outer));
+        for (int j = -1; j <= 1; j += 2) {
+            Circle inner = Circle(Point2D(i*1.0,i*1.0), 3.0);
+            results("Circle-in-TriangleT", true, inner.containedWithin(outer));
+        }
     }
 }
 
@@ -142,8 +144,10 @@ static void testCirclesInsideTriangleF()
             Point2D(-10,-6), Point2D(10,-6) });
 
     for (int i = -1; i <= 1; i += 2) {
-        Circle inner = Circle(Point2D(i*1.0,i*1.0), 6.0);
-        results("Circle-in-TriangleF", false, inner.containedWithin(outer));
+        for (int j = -1; j <= 1; j += 2) {
+            Circle inner = Circle(Point2D(i*1.0,j*1.0), 6.0);
+            results("Circle-in-TriangleF", false, inner.containedWithin(outer));
+        }
     }
 }
 
@@ -154,8 +158,12 @@ static void testCircleInsideHexagon()
             Point2D(-9, 0), Point2D(-6, 6), Point2D( 6, 6),
             Point2D(-6,-6), Point2D( 6,-6), Point2D( 9, 0) });
 
-    Circle inner = Circle(Point2D(0.0,0.0), 2.0);
-    results("Circle-in-Hexagon", false, inner.containedWithin(outer));
+    for (int i = -1; i <= 1; i += 2) {
+        for (int j = -1; j <= 1; j += 2) {
+            Circle inner = Circle(Point2D(i*0.5,j*0.5), 2.0);
+            results("Circle-in-Hexagon", false, inner.containedWithin(outer));
+        }
+    }
 }
 
 
@@ -197,26 +205,62 @@ static void testSquaresInsideSquare()
 /**************************************************************************
  * Test cases for RTRIANGLE OUTER.
  */
-// static void testCirclesInsideReuleauxTriangleT()
-// {
-//     ReuleauxTriangle outer =
-//         ReuleauxTriangle({ Point2D(0,5), Point2D(5,0), Point2D(-5,0) });
-//     Circle inner = Circle(Point2D(0.0,0.0), 2);
-//
-//     results("Circle-in-ReuleauxTriangleT", true, inner.containedWithin(outer));
-// }
+static void testCirclesInsideReuleauxTriangleT()
+{
+    ReuleauxTriangle outer =
+        ReuleauxTriangle({ Point2D(0,5), Point2D(5,0), Point2D(-5,0) });
 
-// static void testCirclesInsideReuleauxTriangleF()
-// {
-//     ReuleauxTriangle outer =
-//         ReuleauxTriangle({ Point2D(0,5), Point2D(5,0), Point2D(-5,0) });
-//     Circle inner = Circle(Point2D(0.0,0.0), 4);
-//
-//     results("Circle-in-ReuleauxTriangleF", false, inner.containedWithin(outer));
-// }
+    for (int i = -1; i <= 1; i += 2) {
+        for (int j = -1; j <= 1; j += 2) {
+            Circle inner = Circle(Point2D(i*0.5,j*0.5), 2.0);
+            //printCenter(inner);
+            results("Circle-in-ReuleauxTriangleT", true, inner.containedWithin(outer));
+        }
+    }
+}
 
+static void testCirclesInsideReuleauxTriangleF()
+{
+    ReuleauxTriangle outer =
+        ReuleauxTriangle({ Point2D(0,5), Point2D(5,0), Point2D(-5,0) });
 
+    for (int i = -1; i <= 1; i += 2) {
+        for (int j = -1; j <= 1; j += 2) {
+            Circle inner = Circle(Point2D(i*3,j*3), 3.0);
+            //printCenter(inner);
+            results("Circle-in-ReuleauxTriangleF", true, inner.containedWithin(outer));
+        }
+    }
+}
 
+static void testTrianglesInsideReuleauxTriangle()
+{
+    ReuleauxTriangle outer =
+        ReuleauxTriangle({ Point2D(0,5), Point2D(5,0), Point2D(-5,0) });
+
+    for (int i = -1; i <= 1; i += 2) {
+        for (int j = -1; j <= 1; j += 2) {
+            RegularConvexPolygon inner =
+                RegularConvexPolygon({ Point2D(i*2,j*2),
+                    Point2D(i*-2,j*-1), Point2D(i*0,j*0) });
+            results("Triangles-in-ReuleauxTriangle", true, inner.containedWithin(outer));
+        }
+    }
+}
+
+static void testReuleauxTrianglesInsideReuleauxTriangle()
+{
+    ReuleauxTriangle outer =
+        ReuleauxTriangle({ Point2D(0,5), Point2D(5,0), Point2D(-5,0) });
+
+    for (int i = -1; i <= 1; i += 2) {
+        for (int j = -1; j <= 1; j += 2) {
+            ReuleauxTriangle inner =
+                ReuleauxTriangle({ Point2D(i*0,j*2), Point2D(i*2,j*0), Point2D(i*-2,j*0) });
+            results("ReuleauxTriangles-in-ReuleauxTriangle", true, inner.containedWithin(outer));
+        }
+    }
+}
 
 
 /**************************************************************************
@@ -232,22 +276,17 @@ int main(int argc, char *argv[])
     testCirclesInsideTriangleT();
     testCirclesInsideTriangleF();
 
-    printf("-----------------------------\n\n");
+    //printf("-----------------------------\n\n");
     testCircleInsideHexagon();
 
-    printf("-----------------------------\n\n");
+    //printf("-----------------------------\n\n");
 
     testSquaresInsideSquare();
 
+    //printf("-----------------------------\n\n");
 
-    printf("-----------------------------\n\n");
-
-    // testCirclesInsideReuleauxTriangleT();
-    // testCirclesInsideReuleauxTriangleF();
+    testCirclesInsideReuleauxTriangleT();
+    testCirclesInsideReuleauxTriangleF();
+    testTrianglesInsideReuleauxTriangle();
+    testReuleauxTrianglesInsideReuleauxTriangle();
 }
-
-
-
-
-
-//

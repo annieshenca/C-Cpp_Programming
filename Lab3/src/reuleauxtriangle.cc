@@ -11,6 +11,15 @@
 #include "geom.h"
 #include "reuleauxtriangle.h"
 
+////////////////////////////////////////////
+
+// ReuleauxTriangle::ReuleauxTriangle(std::vector<Point2D> vertices[3]) {
+//     std::vector<Point2D> v;
+//     ver_ = v;
+// }
+
+////////////////////////////////////////////
+
 ReuleauxTriangle::ReuleauxTriangle(std::vector<Point2D> vertices) {
     vertices_ = vertices;
 }

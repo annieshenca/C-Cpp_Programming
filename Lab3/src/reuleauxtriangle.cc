@@ -20,21 +20,26 @@
 
 ////////////////////////////////////////////
 
-ReuleauxTriangle::ReuleauxTriangle(std::vector<Point2D> vertices) {
-    vertices_ = vertices;
+// ReuleauxTriangle::ReuleauxTriangle(std::vector<Point2D> vertices) {
+//     vertices_ = vertices;
+// }
+
+ReuleauxTriangle::ReuleauxTriangle(Point2D vertices[3]) {
+    std::vector<Point2D> v;
+    ver_ = v;
 }
 
-std::vector<Point2D> ReuleauxTriangle::vertices() {
-    return vertices_;
-}
+// std::vector<Point2D> ReuleauxTriangle::vertices() {
+//     return ver_;
+// }
 
-std::vector<Line> ReuleauxTriangle::edges() {
-    std::vector<Line> edges;
-    for (unsigned int i = 0; i < vertices_.size()-1; i++)
-        edges.push_back(Line(vertices_[i],vertices_[i+1]));
-    edges.push_back(Line(vertices_[vertices_.size()-1],vertices_[0]));
-    return edges;
-}
+// std::vector<Line> ReuleauxTriangle::edges() {
+//     std::vector<Line> edges;
+//     for (unsigned int i = 0; i < vertices_.size()-1; i++)
+//         edges.push_back(Line(vertices_[i],vertices_[i+1]));
+//     edges.push_back(Line(vertices_[vertices_.size()-1],vertices_[0]));
+//     return edges;
+// }
 
 // int ReuleauxTriangle::vertexCount() {
 //     return vertices_.size();

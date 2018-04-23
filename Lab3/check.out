@@ -22,10 +22,16 @@ PASS Circle-in-TriangleF
 PASS Circle-in-TriangleF
 ------
 
+FAIL Circle-in-Square
+FAIL Circle-in-Square
+FAIL Circle-in-Square
 ------
 
+fak 1
+lines intersected!!!
+FAIL Squares-inside-Square
 FAIL Circle-in-Hexagon
 ------
 
-               Tests:   21/ 22    95.0%
+               Tests:   21/ 26    80.0%
 

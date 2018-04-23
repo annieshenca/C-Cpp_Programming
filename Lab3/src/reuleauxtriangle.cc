@@ -13,12 +13,10 @@
 
 ReuleauxTriangle::ReuleauxTriangle(std::vector<Point2D> vertices) {
     vertices_ = vertices;
-    //std:vector<vertices>;
 }
 
 std::vector<Point2D> ReuleauxTriangle::vertices() {
     return vertices_;
-    //return std:vector<vertices>;
 }
 
 std::vector<Line> ReuleauxTriangle::edges() {
@@ -29,9 +27,9 @@ std::vector<Line> ReuleauxTriangle::edges() {
     return edges;
 }
 
-int ReuleauxTriangle::vertexCount() {
-    return vertices_.size();
-}
+// int ReuleauxTriangle::vertexCount() {
+//     return vertices_.size();
+// }
 
 /*
  * Polygon in C

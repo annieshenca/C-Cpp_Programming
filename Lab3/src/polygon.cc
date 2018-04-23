@@ -6,10 +6,9 @@
  */
 
 #include <iostream>
-#include "circle.h"
 #include "polygon.h"
-#include "reuleauxtriangle.h"
 #include "geom.h"
+#include "reuleauxtriangle.h"
 
 RegularConvexPolygon::RegularConvexPolygon(std::vector<Point2D> vertices) {
     vertices_ = vertices;
@@ -58,7 +57,6 @@ bool RegularConvexPolygon::containedWithin(RegularConvexPolygon &polygon) {
             return false;
     }
 
-    printf("can this work now please?\n");
     for (Line const &edge : polygon.edges()) {
         for (Line const &inner : edges()) {
             if (Geom::intersects(edge, inner)) {
@@ -67,7 +65,6 @@ bool RegularConvexPolygon::containedWithin(RegularConvexPolygon &polygon) {
             }
         }
     }
-
     return true;
 }
 
@@ -77,13 +74,11 @@ bool RegularConvexPolygon::containedWithin(RegularConvexPolygon &polygon) {
  * Only other possibility is that the poly is contained
  */
 bool RegularConvexPolygon::containedWithin(ReuleauxTriangle &rt) {
-
-    Line line(Geom::center(polygon), Geom::center(*this)); // Centers of polygon
-    for (Line const &edge : polygon.edges()) {
-        if (Geom::intersects(edge, line))
-            return false;
-    }
-
+    // Line line(Geom::center(polygon), Geom::center(*this)); // Centers of polygon
+    // for (Line const &edge : polygon.edges()) {
+    //     if (Geom::intersects(edge, line))
+    //         return false;
+    // }
 
     return true;
 }

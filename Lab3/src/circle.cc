@@ -58,11 +58,11 @@ bool Circle::containedWithin(RegularConvexPolygon &polygon)
         if (Geom::intersects(edge, line))
             return false;
     }
+
     return true;
 }
 
 bool Circle::containedWithin(ReuleauxTriangle &rt) {
-    printf("not implemented");
     // for (Line const &edge: polygon.edges()) {
     //     if (Geom::intersects(edge, *this))
     //         return false;

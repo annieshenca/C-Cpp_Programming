@@ -6,9 +6,9 @@
  */
 
 #include <iostream>
-#include "circle.h"
 #include "polygon.h"
 #include "geom.h"
+#include "reuleauxtriangle.h"
 
 RegularConvexPolygon::RegularConvexPolygon(std::vector<Point2D> vertices) {
     vertices_ = vertices;
@@ -50,26 +50,35 @@ bool RegularConvexPolygon::containedWithin(Circle &circle) {
  * Only other possibility is that the poly is contained
  */
 bool RegularConvexPolygon::containedWithin(RegularConvexPolygon &polygon) {
-    printf("fak 1\n");
-    for (Line const &edge : polygon.edges()) {
-        for (Line const &edge_inner : edges()) {
-            if (Geom::intersects(edge, edge_inner)) {
-                printf("lines intersected!!!\n");
-                return false;
-            }
-        }
-    }
 
-    printf("fak 2\n");
     Line line(Geom::center(polygon), Geom::center(*this)); // Centers of polygon
     for (Line const &edge : polygon.edges()) {
         if (Geom::intersects(edge, line))
             return false;
     }
 
+    for (Line const &edge : polygon.edges()) {
+        for (Line const &inner : edges()) {
+            if (Geom::intersects(edge, inner)) {
+                //printf("lines intersected!!!\n");
+                return false;
+            }
+        }
+    }
     return true;
 }
 
+/*
+ * If any poly edge intersects with any polygon edge, poly is not contained.
+ * If line between centers intersects with any polygon edge, poly is not contained
+ * Only other possibility is that the poly is contained
+ */
 bool RegularConvexPolygon::containedWithin(ReuleauxTriangle &rt) {
-    throw "Not implemented";
+    // Line line(Geom::center(polygon), Geom::center(*this)); // Centers of polygon
+    // for (Line const &edge : polygon.edges()) {
+    //     if (Geom::intersects(edge, line))
+    //         return false;
+    // }
+
+    return true;
 }

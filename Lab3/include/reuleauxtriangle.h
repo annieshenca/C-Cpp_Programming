@@ -25,9 +25,9 @@ class ReuleauxTriangle : public Containable2D {
         std::vector<Line> edges();
         //std::vector<Circle>???;
 
-        bool containedWithIn(Circle &circle);
-        bool containedWithIn(RegularConvexPolygon &polygon);
-        bool containedWithIn(ReuleauxTriangle &rt);
+        bool containedWithin(Circle &circle);
+        bool containedWithin(RegularConvexPolygon &polygon);
+        bool containedWithin(ReuleauxTriangle &rt);
 };
 
 #endif

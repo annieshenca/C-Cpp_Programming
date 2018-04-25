@@ -1,5 +1,56 @@
+PASS Circles-inside-CircleT
+PASS Circles-inside-CircleT
+PASS Circles-inside-CircleT
+PASS Circles-inside-CircleT
+PASS Circles-inside-CircleF
+PASS Circles-inside-CircleF
+PASS Circles-inside-CircleF
+PASS Circles-inside-CircleF
+PASS Triangle-in-Circle
+PASS Triangle-in-Circle
+PASS Triangle-in-Circle
+PASS Triangle-in-Circle
+PASS Squares-in-Circle
+PASS Squares-in-Circle
+PASS Squares-in-Circle
+PASS Squares-in-Circle
+PASS Hexagon-in-Circle
+PASS Circle-in-TriangleT
+PASS Circle-in-TriangleT
+PASS Circle-in-TriangleT
+PASS Circle-in-TriangleT
+PASS Circle-in-TriangleF
+PASS Circle-in-TriangleF
+PASS Circle-in-TriangleF
+PASS Circle-in-TriangleF
+PASS Circle-in-Hexagon
+PASS Circle-in-Hexagon
+PASS Circle-in-Hexagon
+PASS Circle-in-Hexagon
+PASS Squares-inside-Square
+PASS Squares-inside-Square
+PASS Squares-inside-Square
+PASS Squares-inside-Square
+<<<<<<< HEAD
+PASS Circle-in-ReuleauxTriangleT
+PASS Circle-in-ReuleauxTriangleT
+PASS Circle-in-ReuleauxTriangleT
+PASS Circle-in-ReuleauxTriangleT
+PASS Circle-in-ReuleauxTriangleF
+PASS Circle-in-ReuleauxTriangleF
+PASS Circle-in-ReuleauxTriangleF
+PASS Circle-in-ReuleauxTriangleF
+PASS Triangles-in-ReuleauxTriangle
+PASS Triangles-in-ReuleauxTriangle
+PASS Triangles-in-ReuleauxTriangle
+PASS Triangles-in-ReuleauxTriangle
+PASS ReuleauxTriangles-in-ReuleauxTriangle
+PASS ReuleauxTriangles-in-ReuleauxTriangle
+PASS ReuleauxTriangles-in-ReuleauxTriangle
+PASS ReuleauxTriangles-in-ReuleauxTriangle
 
-Test file: bounds.tests
+               Tests:   49/ 49   100.0%
+=======
 
-               Tests:    0/  0     0.0%
+               Tests:   33/ 33   100.0%
 

@@ -28,7 +28,7 @@ class Circle : public Containable2D {
         double radius();
         void setRadius(double radius);
 
-        bool containedWithin(Circle &circle);
+        virtual bool containedWithin(Circle &circle);
         bool containedWithin(RegularConvexPolygon &polygon);
         bool containedWithin(ReuleauxTriangle &rt);
 };

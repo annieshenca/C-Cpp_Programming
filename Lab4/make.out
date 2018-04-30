@@ -1,3 +1,0 @@
-src/main.cc:44:16: warning: ‘Point3D getPoint3D(std::__cxx11::string&)’ defined but not used [-Wunused-function]
- static Point3D getPoint3D (std::string &token) {
-                ^

@@ -8,6 +8,7 @@
 #include <string>
 #include "radix.h"
 
+static int R = 2<<8;
 
 static int charAt (std::string s, int i) {
     if (i < s.length()) {

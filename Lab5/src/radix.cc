@@ -53,7 +53,7 @@ static void sort (unsigned int s[], int len) {
 }
 
 RadixSort::RadixSort(const unsigned int cores) {
-    int unused = 0;
+    std::cout << cores << std::endl;
 }
 
 
@@ -61,18 +61,18 @@ void RadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsigned int>
     std::vecotr<std::thread> threads;
 
     // Iterating through the vectors in the vector
-    for(std::vector<unsigned int> &vec : lists) {
-        sort( vec.data(), vec.size() );
-
-        if ( < 24) {
-            
-        }
-
-        if () {
-
-        }
-    }
-    // for (each list)
+    // for(std::vector<unsigned int> &vec : lists) {
+    //     // sort( vec.data(), vec.size() );
+    //
+    //     if ( < 24) {
+    //         std::thread trd( (sort(vec.data(), vec.size())) );
+    //     }
+    //
+    //     if () {
+    //
+    //     }
+    // }
+    // // for (each list)
     // if ( # of threads currently running < cores )
     //     create new thread
     // if ( # of threads currently running == cores || # threads created in total == # of lists )

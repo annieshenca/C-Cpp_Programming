@@ -4,7 +4,7 @@ src/radix.cc:14:11: warning: comparison between signed and unsigned integer expr
            ^
 main.o: In function `main':
 main.cc:(.text+0x416): multiple definition of `main'
-/tmp/cc41G18V.o:radix.cc:(.text+0x49f): first defined here
+/tmp/ccyjriZG.o:radix.cc:(.text+0x49f): first defined here
 main.o: In function `main':
 main.cc:(.text+0x7db): undefined reference to `RadixSort::RadixSort(unsigned int)'
 main.cc:(.text+0x81c): undefined reference to `RadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsigned int, std::allocator<unsigned int> > >, std::allocator<std::reference_wrapper<std::vector<unsigned int, std::allocator<unsigned int> > > > >&)'

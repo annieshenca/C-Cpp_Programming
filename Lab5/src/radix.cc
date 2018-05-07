@@ -6,6 +6,7 @@
  */
 #include <iostream>
 #include <string>
+#include <thread>
 #include "radix.h"
 
 static int R = 2<<8;
@@ -57,8 +58,33 @@ RadixSort::RadixSort(const unsigned int cores) {
 
 
 void RadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists) {
+    std::vecotr<std::thread> threads;
+
     // Iterating through the vectors in the vector
     for(std::vector<unsigned int> &vec : lists) {
         sort( vec.data(), vec.size() );
+
+        if ( < 24) {
+            
+        }
+
+        if () {
+
+        }
     }
+    // for (each list)
+    // if ( # of threads currently running < cores )
+    //     create new thread
+    // if ( # of threads currently running == cores || # threads created in total == # of lists )
+    //     for ( each thread currently running )
+    //         join and remove thread from currently running threads collection
+
 }
+
+// void RadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists) {
+//     // Iterating through the vectors in the vector
+//     for(std::vector<unsigned int> &vec : lists) {
+//         sort( vec.data(), vec.size() );
+//     }
+//
+// }

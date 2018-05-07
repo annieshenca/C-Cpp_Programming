@@ -19,7 +19,8 @@ static int charAt (std::string s, int i) {
 
 static void sort(unsigned int s[], unsigned int aux[], int low, int high, int at) {
 
-    if(high <= low) return;
+    if(high <= low)
+        return;
 
     int count[R+2];
 
@@ -33,7 +34,7 @@ static void sort(unsigned int s[], unsigned int aux[], int low, int high, int at
         count[i+1] += count[i];
 
     for (int i = low; i <= high; ++i)
-        aux[count[std::to_string(s[i]), at)+1]++] = s[i];
+        aux[count[charAt(std::to_string(s[i]), at)+1]++] = s[i];
 
     for (int i = low; i <= high; ++i)
         s[i] = aux[i-low];
@@ -50,7 +51,7 @@ static void sort (unsigned int s[], int len) {
     sort(s, aux, low, high, at);
 }
 
-static void main(String[] args) throws Exception{
+int main() {
     unsigned int s[] = {43, 102, 11, 21, 37, 110, 34, 99, 745};
     sort(s, 9);
     for (int i = 0; i < 9; ++i)

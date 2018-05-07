@@ -1,8 +1,0 @@
-src/radix.cc: In member function ‘void RadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsigned int> > >&)’:
-src/radix.cc:65:14: error: no match for ‘operator*’ (operand type is ‘std::vector<unsigned int>’)
-         sort(*vec, size);
-              ^
-src/radix.cc: At global scope:
-src/radix.cc:46:13: warning: ‘void sort(unsigned int*, int)’ defined but not used [-Wunused-function]
- static void sort (unsigned int s[], int len) {
-             ^

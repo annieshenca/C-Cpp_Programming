@@ -51,34 +51,14 @@ static void sort (unsigned int s[], int len) {
     sort(s, aux, low, high, at);
 }
 
-// RadixSort::RadixSort(const unsigned int cores) {
-//
-// }
-
-
-void RadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists) {
-
-    // Iterating through the vectors in the vector
-    for(std::vector<unsigned int> &vec : lists) {
-        int size = vec.size();
-
-        sort(*vec, size);
-        // // Iterating through integers in each vectors. For testing purposes.
-        // for (unsigned int &temp : inner) {
-        //     std::cout << ' ' << temp;
-        // }
-
-        std::cout << '\n';
-    }
-
+RadixSort::RadixSort(const unsigned int cores) {
+    int unused = 0;
 }
 
 
-// int main() {
-//     unsigned int s[] = {43, 102, 11, 21, 37, 110, 34, 99, 745};
-//     sort(s, 9);
-//     for (int i = 0; i < 9; ++i)
-//         std::cout << std::to_string(s[i]) << std::endl;
-//
-//
-// }
+void RadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists) {
+    // Iterating through the vectors in the vector
+    for(std::vector<unsigned int> &vec : lists) {
+        sort( vec.data(), vec.size() );
+    }
+}

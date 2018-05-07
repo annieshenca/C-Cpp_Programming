@@ -18,7 +18,7 @@ public:
      * Create a multi-threaded RadiX Sort restricted to using no more than
      * CORES processor cores.
      */
-    // RadixSort(const unsigned int cores);
+    RadixSort(const unsigned int cores);
 
     /*
      * Perform an in-place Most Significant Digit Radix Sort on each list of

@@ -59,8 +59,8 @@ void RadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsigned int>
     std::cout << "myvector contains:";
 
     for (std::vector<std::reference_wrapper<std::vector<unsigned int>>>::iterator it = lists.begin() ; it != lists.end(); ++it)
-        std::cout << ' ' << *it;
-    
+        printf("it: %p\n",&it);
+
     std::cout << '\n';
 
 }

@@ -51,13 +51,19 @@ static void sort (unsigned int s[], int len) {
     sort(s, aux, low, high, at);
 }
 
-// RadixSort::RadixSort(const unsigned int cores) {
-//     int ununsed = 0; // to fail complier warming test, remove
-// }
-//
-// void RadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists) {
-//     // your implementation goes here :)
-// }
+RadixSort::RadixSort(const unsigned int cores) {
+    int ununsed = 0; // to fail complier warming test, remove
+}
+
+void RadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists) {
+    std::cout << "myvector contains:";
+
+    for (std::vector<std::reference_wrapper<std::vector<unsigned int>>>::iterator it = lists.begin() ; it != lists.end(); ++it)
+        std::cout << ' ' << *it;
+    
+    std::cout << '\n';
+
+}
 
 int main() {
     unsigned int s[] = {43, 102, 11, 21, 37, 110, 34, 99, 745};

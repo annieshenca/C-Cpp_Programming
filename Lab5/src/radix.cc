@@ -11,13 +11,13 @@
 static int R = 2<<8;
 
 static int charAt (std::string s, int i) {
-    if (i < s.length()) {
+    if ( (unsigned int)i < s.length() ) {
         return s.at(i);
     }
     return -1;
 }
 
-static void sort(unsigned int s[], unsigned int aux[], int low, int high, int at) {
+static void sort (unsigned int s[], unsigned int aux[], int low, int high, int at) {
 
     if(high <= low)
         return;
@@ -51,25 +51,34 @@ static void sort (unsigned int s[], int len) {
     sort(s, aux, low, high, at);
 }
 
-RadixSort::RadixSort(const unsigned int cores) {
-    int ununsed = 0; // to fail complier warming test, remove
-}
+// RadixSort::RadixSort(const unsigned int cores) {
+//
+// }
+
 
 void RadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists) {
-    std::cout << "myvector contains:";
 
-    for (std::vector<std::reference_wrapper<std::vector<unsigned int>>>::iterator it = lists.begin() ; it != lists.end(); ++it)
-        printf("it: %p\n",&it);
+    // Iterating through the vectors in the vector
+    for(std::vector<unsigned int> &vec : lists) {
+        int size = vec.size();
 
-    std::cout << '\n';
+        sort(*vec, size);
+        // // Iterating through integers in each vectors. For testing purposes.
+        // for (unsigned int &temp : inner) {
+        //     std::cout << ' ' << temp;
+        // }
 
-}
-
-int main() {
-    unsigned int s[] = {43, 102, 11, 21, 37, 110, 34, 99, 745};
-    sort(s, 9);
-    for (int i = 0; i < 9; ++i)
-        std::cout << std::to_string(s[i]) << std::endl;
-
+        std::cout << '\n';
+    }
 
 }
+
+
+// int main() {
+//     unsigned int s[] = {43, 102, 11, 21, 37, 110, 34, 99, 745};
+//     sort(s, 9);
+//     for (int i = 0; i < 9; ++i)
+//         std::cout << std::to_string(s[i]) << std::endl;
+//
+//
+// }

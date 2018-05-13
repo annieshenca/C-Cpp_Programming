@@ -81,40 +81,6 @@ void RadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsigned int>
             }
             threads.clear();
         }
-
-        // if ( < 24) {
-        //     std::thread trd( (sort(vec.data(), vec.size())) );
-        // }
-        //
-        // if () {
-        //
-        // }
     }
-    // for (each list)
-    // if ( # of threads currently running < cores )
-    //     create new thread
-    // if ( # of threads currently running == cores || # threads created in total == # of lists )
-    //     for ( each thread currently running )
-    //         join and remove thread from currently running threads collection
-
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//

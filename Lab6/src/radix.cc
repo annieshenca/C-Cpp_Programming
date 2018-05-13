@@ -48,7 +48,7 @@ void ParallelRadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsig
         if (threads.size() == cores || num_threads == lists.size()) {
             for (std::thread *thread : threads) {
                 thread->join();
-                thread.clear(); // Clear memory to pervent segimentation fault.
+                //thread.clear(); // Clear memory to pervent segimentation fault.
             }
             threads.clear(); // Clear memory to pervent segimentation fault.
         }

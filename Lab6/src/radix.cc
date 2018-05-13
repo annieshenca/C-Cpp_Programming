@@ -50,7 +50,6 @@ void ParallelRadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsig
                 thread->join();
                 thread.clear(); // Clear memory to pervent segimentation fault.
             }
-
             threads.clear(); // Clear memory to pervent segimentation fault.
         }
     }

@@ -88,39 +88,3 @@ void ParallelRadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsig
     }
 }
 
-/*
- * Vectors within vectors!!!
- * Each vector list contains lists of things to operate on, which requires
- * creating threads to perform.
- */
-// void ParallelRadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists, unsigned int cores) {
-//     std::vector<std::thread*> threads; // Create a new vector to store threads.
-//     unsigned int num_threads = 0; // Total number of threads created.
-//
-//     // For each vector-lists(list) within a vector-list(lists).
-//     // Call by references, never by value.
-//     for(std::vector<unsigned int> &list : lists) {
-//
-//         // Push the newly created thread to the back vector-threads list.
-//         threads.push_back(new std::thread{[&list] {
-//
-//             // Calling sorting algorithm. C++ has std::sort but need to specify
-//             // type, which in this case is unsigned int.
-//             std::sort(list.begin(), list.end(), [](const unsigned int &a, const unsigned int &b) {
-//                 return std::to_string(a).compare(std::to_string(b)) < 0;
-//             });
-//         }});
-//         num_threads++; // Increment number of threads
-//
-//         // Either when the number of threads equal to how many cores we have, or
-//         // the number of threads is the same as the vector-lists size, join the
-//         // threads to have them perform in order of thread creation.
-//         if (threads.size() == cores || num_threads == lists.size()) {
-//             for (std::thread *thread : threads) {
-//                 thread->join();
-//                 //thread.clear(); // Clear memory to pervent segimentation fault.
-//             }
-//             threads.clear(); // Clear memory to pervent segimentation fault.
-//         }
-//     }
-// }

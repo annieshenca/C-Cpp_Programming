@@ -4,12 +4,32 @@
  * You may not use, distribute, publish, or modify this code without
  * the express written permission of the copyright holder.
  */
+
+/*
+ * Sources:
+ * https://opencast-player-1.lt.ucsc.edu:8443/engage/theodul/ui/core.html?id=e8d75c88-e18b-45fc-b5b8-ddae7fcc3093 https://opencast-player-1.lt.ucsc.edu:8443/engage/theodul/ui/core.html?id=b07033c4-f623-4907-9ab4-85e9fb3d79cb
+ * https://www.geeksforgeeks.org/socket-programming-cc/
+ */
+
+
 #include <iostream>
-#include <string>
+#include <strings.h>
+#include <string.h>
 #include <thread>
 #include <algorithm>
 #include <vector>
+#include <chrono>
+#include <unistd.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <stdlib.h>
+#include <netinet/in.h>
+#include <netdb.h>
 #include "radix.h"
+
+
+void error(const char* s){fprintf(stderr,"%s\n",s);}
 
 void ParallelRadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists, const unsigned int cores) {
     std::vector<std::thread*> threads;
@@ -35,9 +55,21 @@ void ParallelRadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsig
 }
 
 
-RadixServer::RadixServer(const int port, const unsigned int cores) {
-    int port = atoi(argv[1]);
 
+
+void radixSort(std::vector<unsigned int> &list) {
+
+    std::thread *t = new std::thread{[&list] {
+        std::sort(list.begin(), list.end(), [](const unsigned int &a, const unsigned int &b) {
+            return std::to_string(a).compare(std::to_string(b)) < 0;
+        });
+    }};
+    t->join();
+}
+
+
+
+RadixServer::RadixServer(const int port, const unsigned int cores) {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd < 0) exit(-1);
 
@@ -51,37 +83,41 @@ RadixServer::RadixServer(const int port, const unsigned int cores) {
         exit(-1);
 
     listen(sockfd,100);
+    struct sockaddr_in client_addr;
+    socklen_t len = sizeof(client_addr);
+    int newsockfd = accept(sockfd, (struct sockaddr *) &client_addr, &len);
+    if (newsockfd < 0) exit(-1);
 
-    std::vector<std::thread*> threads;
+    std::vector<unsigned int> list;
 
-    for (int id = 0; id < 10; id++) {
-        threads.push_back(new std::thread{[&sockfd,id] {
-            char buffer[256];
-            for (;;) {
-                struct sockaddr_in client_addr;
-                socklen_t len = sizeof(client_addr);
-                int newsockfd = accept(sockfd, (struct sockaddr *) &client_addr, &len);
-                if (newsockfd < 0) exit(-1);
+    for (;;) {
+        unsigned int tran;
+        unsigned int ftran;
+        int n = 0;
 
-                bzero(buffer,256);
-                int n = recv(newsockfd,buffer,255,0);
-                if (n < 0) exit(-1);
+        for (;;) {
+            n = recv(newsockfd, (void*)&tran, sizeof(unsigned int), 0);
+            if (n < 0) exit(-1);
+            ftran = ntohl(tran);
+            if (ftran == 0) break;
+            list.push_back(ftran);
+        }
 
-                printf("Thread %d Received: %s\n", id, buffer);
+        radixSort(list);
 
-                n = send(newsockfd,buffer,strlen(buffer),0);
-                if (n < 0) exit(-1);
-
-                close(newsockfd);
-            }
-        }});
+        for (unsigned int &l : list) {
+            tran = htonl(l);
+            n = write(newsockfd, (void*)&tran, sizeof(unsigned int));
+            if (n < 0) exit(-1);
+        }
+        tran = htonl(0);
+        n = write(newsockfd, (void*)&tran, sizeof(unsigned int));
+        if (n < 0) exit(-1);
+        list.clear();
+        sleep(5);
     }
-
-    for (std::thread *thread : threads)
-        thread->join();
-
+    close(newsockfd);
     close(sockfd);
-
 }
 
 
@@ -89,7 +125,7 @@ void RadixClient::msd(const char *hostname, const int port, std::vector<std::ref
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd < 0) error("open");
 
-    struct hostent *server = gethostbyname(argv[1]);
+    struct hostent *server = gethostbyname(hostname);
     if (server == NULL) exit(-1);
 
     struct sockaddr_in serv_addr;
@@ -97,25 +133,35 @@ void RadixClient::msd(const char *hostname, const int port, std::vector<std::ref
     serv_addr.sin_family = AF_INET;
     bcopy((char *)server->h_addr, (char *)&serv_addr.sin_addr.s_addr, server->h_length);
 
-    int port = atoi(argv[2]);
     serv_addr.sin_port = htons(port);
 
     if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0) exit(-1);
 
-    int n = write(sockfd,argv[3],strlen(argv[3]));
-    if (n < 0) exit(-1);
+    for (std::vector<unsigned int> &list : lists) {
+        unsigned int tran;
+        int n = 0;
+        for (unsigned int &l : list) {
+            tran = htonl(l);
+            n = write(sockfd, (void*)&tran, sizeof(unsigned int));
+            if (n < 0) exit(-1);
+        }
+        tran = htonl(0);
+        n = write(sockfd, (void*)&tran, sizeof(unsigned int));
+        if (n < 0) exit(-1);
+        list.clear();
 
-    char buffer[256];
-    bzero(buffer,256);
-    n = read(sockfd,buffer,255);
-    if (n < 0) exit(-1);
 
-    printf("Received: %s\n", buffer);
+        for(;;) {
+            unsigned int tran = 0;
+            n = recv(sockfd, (void*)&tran, sizeof(unsigned int), 0);
+            if (n < 0) exit(-1);
+            unsigned int v = ntohl(tran);
+            if (v == 0){
+                break;
+            }
+            list.push_back(v);
+        }
 
+    }
     close(sockfd);
-
 }
-
-
-
-//

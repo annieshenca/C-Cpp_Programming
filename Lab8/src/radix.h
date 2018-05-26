@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2018 David C. Harrison. All right reserved.
  *
- * You may not use, distribute, publish, or modify this code without 
+ * You may not use, distribute, publish, or modify this code without
  * the express written permission of the copyright holder.
  */
 
@@ -16,7 +16,7 @@
                   // If set, VALUES contains the sequence numbers of missing batches
 
 /*
- * On-wire datagram. 
+ * On-wire datagram.
  *
  * All elements should be converted to network byte-order before transmission
  * and converted back to host byte-order on recepit.
@@ -39,4 +39,14 @@ public:
 class RadixClient {
 public:
     void msd(const char *hostname, const int port, std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists);
+};
+
+
+/*
+ * Perform an in-place Most Significant Digit Radix Sort on each list of
+ * unsigned integers in LISTS using nore that CORES cpu cores.
+ */
+class ParallelRadixSort {
+public:
+    void msd(std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists, const unsigned int cores);
 };

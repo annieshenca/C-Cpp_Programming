@@ -116,8 +116,8 @@ void RadixServer::start(const int port, const unsigned int cores) {
                     backup = msg.sequence;
 
                     //Right before sending, change all of msg's struct to htonl()!
-                    for (unsigned int &num : msg.values) {
-                        num = htonl(num);
+                    for (unsigned int i = 0; i < msg.num_values; i++) {
+                        msg.values[i] = htonl(msg.values[i]);
                     }
                     msg.num_values = htonl(msg.num_values);
                     msg.sequence = htonl(msg.sequence);
@@ -135,8 +135,8 @@ void RadixServer::start(const int port, const unsigned int cores) {
 
             // Now sending the last datagram to client.
             msg.flag = LAST;
-            for (unsigned int &num : msg.values) {
-                num = htonl(num);
+            for (unsigned int i = 0; i < msg.num_values; i++) {
+                msg.values[i] = htonl(msg.values[i]);
             }
             msg.num_values = htonl(msg.num_values);
             msg.sequence = htonl(msg.sequence);
@@ -265,19 +265,31 @@ void RadixClient::msd(const char *hostname, const int port, std::vector<std::ref
         if (n < 0) exit(-1);
         list.clear();
 
+
+        // Receiving msg back from server!
         do {
             n = recvfrom(sockfd, (void*)&msg, sizeof(Message), 0, (struct sockaddr *) &serv_addr, &len);
             if (n < 0) exit(-1);;
 
+            msg.num_values = ntohl(msg.num_values);
+            msg.sequence = ntohl(msg.sequence);
+            msg.flag = ntohl(msg.flag);
+            if (msg.flag == RESEND) {
+                break;
+            }
             for (unsigned int &l : msg.values) {
                 l = ntohl(l);
                 list.push_back(l);
             }
 
-            msg.num_values = ntohl(msg.num_values);
-            msg.sequence = ntohl(msg.sequence);
-            msg.flag = ntohl(msg.flag);
         } while (msg.flag == NONE);
-    }
+
+
+        // Get here if msg is having missing datagram problems.
+        if (msg.flag == RESEND) {
+
+        }
+
+    } // End of for list in lists
     close(sockfd);
 }

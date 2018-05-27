@@ -98,51 +98,63 @@ void RadixClient::msd(const char *hostname, const int port, std::vector<std::ref
     serv_addr.sin_port = htons(port);
 
     if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0) exit(-1);
-
+    socklen_t len = sizeof(serv_addr);
 
     Message msg;
     for (std::vector<unsigned int> &list: lists) {
         int n = 0;
-        unsigned int wire = 0;
+        //unsigned int wire = 0;
         // unsigned int temp[];
         // Init msg's properties.
         msg.num_values = 0;
         msg.sequence = 0;
-        msg.flag = 0; // 0 stands for NONE.
+        msg.flag = NONE; // 0 stands for NONE.
 
         // For each number in list of lists
+        // for (unsigned int i = 0; i < sizeof(list); i++) {
         for (unsigned int &l : list) {
-            msg.values[msg.num_values++] = l;
+            msg.values[msg.num_values] = l;
+            printf("val of l: %d\n", l);
+            printf("msg.valu: %d\n", msg.values[msg.num_values]);
+            msg.num_values++;
+
             if (msg.num_values == MAX_VALUES) {
-                wire = htonl(msg.values[msg.num_values]);
                 // try sizeof(wire) if this does not work.
-                n = write(sockfd, (void*)&wire, sizeof(unsigned int));
+                n = sendto(sockfd, (void*)&msg, sizeof(msg), 0, (struct sockaddr *) &serv_addr, len);
                 if (n < 0) exit(-1);
                 msg.sequence++;
                 msg.num_values = 0;
             }
+
         }
-        msg.flag = 1; // Indicating this is the last datagram being sent.
-        wire = htonl(msg.values[msg.num_values]);
-        n = write(sockfd, (void*)&wire, sizeof(unsigned int));
+        msg.flag = LAST; // Indicating this is the last datagram being sent
+        n = sendto(sockfd, (void*)&msg, sizeof(msg), 0, (struct sockaddr *) &serv_addr, len);
         if (n < 0) exit(-1);
         list.clear();
 
-        do {
-            // n = 0; // Reset value of n to 0.
-            wire = 0; // Reset value of wire to 0.
-            n = recv(sockfd, (void*)&wire, sizeof(unsigned int), 0);
-            if (n < 0) exit(-1);
-            Message temp;
-            temp.values = ntohl(wire.values[wire.num_values]); // Save returned array of numbers.
-            // if (temp == 0) {
-            //     break;
-            // }
+        printf("****** done sending all.\n");
 
-            for (unsigned int &l : temp.values) {
+        //Message recvmsg;
+        do {
+            printf("****** right before recvfrom.\n");
+            n = recvfrom(sockfd, (void*)&msg, sizeof(msg), 0, (struct sockaddr *) &serv_addr, &len);
+            if (n < 0) exit(-1);
+            printf("****** after recvfrom. val of n = %d\n", n);
+            for (unsigned int &l : msg.values) {
+                // printf("number after recv: %d\n", l);
                 list.push_back(l);
             }
-        } while (msg.flag == 0);
+            printf("****** end of do-while loop.\n");
+        } while (msg.flag == NONE);
+
+        printf("****** exited the whole do-while loop.\n");
+        // Once out of do-while loop, the last datagram would be the one with flag == 1.
+        n = recvfrom(sockfd, (void*)&msg, sizeof(msg), 0, (struct sockaddr *) &serv_addr, &len);
+        if (n < 0) exit(-1);
+        for (unsigned int &l : msg.values) {
+            list.push_back(l);
+        }
+
     }
 
     close(sockfd);

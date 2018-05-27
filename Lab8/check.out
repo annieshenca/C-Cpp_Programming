@@ -1,5 +1,648 @@
 Numbers: 1,000 Lists: 1 Cores: 12 Resends: FALSE Lasts: FALSE
 Generating 1,000 random numbers... 
 Generating expected results... 
-Generate time: 0.0055918 seconds
-C
+Generate time: 0.00330338 seconds
+CruzID: ashen7
+Running INTERNAL RadixServer on port 10160 with 12 cores
+Running STUDENT  RadixClient
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** exited the whole do-while loop.
+Elapsed time: 0.006993 seconds
+Comparing results... 
+List 0 PASS
+Numbers: 1,000 Lists: 1 Cores: 12 Resends: FALSE Lasts: FALSE
+Generating 1,000 random numbers... 
+Generating expected results... 
+Generate time: 0.004779 seconds
+CruzID: ashen7
+Running STUDENT  RadixServer on port 10161 with 12 cores
+Numbers: 1,000 Lists: 2 Cores: 12 Resends: FALSE Lasts: FALSE
+Generating 2,000 random numbers... 
+Generating expected results... 
+Generate time: 0.00743664 seconds
+CruzID: ashen7
+Running INTERNAL RadixServer on port 10160 with 12 cores
+Running STUDENT  RadixClient
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** exited the whole do-while loop.
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** exited the whole do-while loop.
+Elapsed time: 0.012905 seconds
+Comparing results... 
+List 0 PASS
+List 1 PASS
+Numbers: 1,000 Lists: 2 Cores: 12 Resends: FALSE Lasts: FALSE
+Generating 2,000 random numbers... 
+Generating expected results... 
+Generate time: 0.007158 seconds
+CruzID: ashen7
+Running STUDENT  RadixServer on port 10161 with 12 cores
+Numbers: 1,000 Lists: 4 Cores: 12 Resends: FALSE Lasts: FALSE
+Generating 4,000 random numbers... 
+Generating expected results... 
+Generate time: 0.00756219 seconds
+CruzID: ashen7
+Running INTERNAL RadixServer on port 10160 with 12 cores
+Running STUDENT  RadixClient
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** exited the whole do-while loop.
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** exited the whole do-while loop.
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** exited the whole do-while loop.
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** exited the whole do-while loop.
+Elapsed time: 0.025553 seconds
+Comparing results... 
+List 0 PASS
+List 1 PASS
+List 2 PASS
+List 3 PASS
+Numbers: 1,000 Lists: 4 Cores: 12 Resends: FALSE Lasts: FALSE
+Generating 4,000 random numbers... 
+Generating expected results... 
+Generate time: 0.009959 seconds
+CruzID: ashen7
+Running STUDENT  RadixServer on port 10161 with 12 cores
+
+               Basic:    7/14    50.0%
+
+Numbers: 1,000 Lists: 1 Cores: 12 Resends: TRUE Lasts: FALSE
+Generating 1,000 random numbers... 
+Generating expected results... 
+Generate time: 0.00517354 seconds
+CruzID: ashen7
+Running INTERNAL RadixServer on port 10160 with 12 cores
+Running STUDENT  RadixClient
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** exited the whole do-while loop.
+Elapsed time: 0.008109 seconds
+Comparing results... 
+List 0 FAIL
+Numbers: 1,000 Lists: 1 Cores: 12 Resends: TRUE Lasts: FALSE
+Generating 1,000 random numbers... 
+Generating expected results... 
+Generate time: 0.006902 seconds
+CruzID: ashen7
+Running STUDENT  RadixServer on port 10161 with 12 cores
+Numbers: 1,000 Lists: 2 Cores: 12 Resends: TRUE Lasts: FALSE
+Generating 2,000 random numbers... 
+Generating expected results... 
+Generate time: 0.00669393 seconds
+CruzID: ashen7
+Running INTERNAL RadixServer on port 10160 with 12 cores
+Running STUDENT  RadixClient
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** exited the whole do-while loop.
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** exited the whole do-while loop.
+Elapsed time: 0.012866 seconds
+Comparing results... 
+List 0 FAIL
+List 1 PASS
+Numbers: 1,000 Lists: 2 Cores: 12 Resends: TRUE Lasts: FALSE
+Generating 2,000 random numbers... 
+Generating expected results... 
+Generate time: 0.006893 seconds
+CruzID: ashen7
+Running STUDENT  RadixServer on port 10161 with 12 cores
+Numbers: 1,000 Lists: 4 Cores: 12 Resends: TRUE Lasts: FALSE
+Generating 4,000 random numbers... 
+Generating expected results... 
+Generate time: 0.00904355 seconds
+CruzID: ashen7
+Running INTERNAL RadixServer on port 10160 with 12 cores
+Running STUDENT  RadixClient
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** exited the whole do-while loop.
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** exited the whole do-while loop.
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** exited the whole do-while loop.
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** exited the whole do-while loop.
+Elapsed time: 0.025257 seconds
+Comparing results... 
+List 0 FAIL
+List 1 PASS
+List 2 PASS
+List 3 PASS
+Numbers: 1,000 Lists: 4 Cores: 12 Resends: TRUE Lasts: FALSE
+Generating 4,000 random numbers... 
+Generating expected results... 
+Generate time: 0.009578 seconds
+CruzID: ashen7
+Running STUDENT  RadixServer on port 10161 with 12 cores
+
+            Advanced:    4/14    28.0%
+
+Numbers: 1,000 Lists: 1 Cores: 12 Resends: FALSE Lasts: TRUE
+Generating 1,000 random numbers... 
+Generating expected results... 
+Generate time: 0.00537251 seconds
+CruzID: ashen7
+Running INTERNAL RadixServer on port 10160 with 12 cores
+Running STUDENT  RadixClient
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+TIMEOUT after 30 seconds!
+Numbers: 1,000 Lists: 2 Cores: 12 Resends: FALSE Lasts: TRUE
+Generating 2,000 random numbers... 
+Generating expected results... 
+Generate time: 0.00650258 seconds
+CruzID: ashen7
+Running INTERNAL RadixServer on port 10160 with 12 cores
+Running STUDENT  RadixClient
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+TIMEOUT after 30 seconds!
+Numbers: 1,000 Lists: 4 Cores: 12 Resends: FALSE Lasts: TRUE
+Generating 4,000 random numbers... 
+Generating expected results... 
+Generate time: 0.00969389 seconds
+CruzID: ashen7
+Running INTERNAL RadixServer on port 10160 with 12 cores
+Running STUDENT  RadixClient
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+TIMEOUT after 30 seconds!
+
+             Stretch:    0/14     0.0%
+
+Numbers: 1,000 Lists: 1 Cores: 12 Resends: TRUE Lasts: TRUE
+Generating 1,000 random numbers... 
+Generating expected results... 
+Generate time: 0.00730729 seconds
+CruzID: ashen7
+Running INTERNAL RadixServer on port 10160 with 12 cores
+Running STUDENT  RadixClient
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+TIMEOUT after 30 seconds!
+Numbers: 1,000 Lists: 2 Cores: 12 Resends: TRUE Lasts: TRUE
+Generating 2,000 random numbers... 
+Generating expected results... 
+Generate time: 0.00756128 seconds
+CruzID: ashen7
+Running INTERNAL RadixServer on port 10160 with 12 cores
+Running STUDENT  RadixClient
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+TIMEOUT after 30 seconds!
+Numbers: 1,000 Lists: 4 Cores: 12 Resends: TRUE Lasts: TRUE
+Generating 4,000 random numbers... 
+Generating expected results... 
+Generate time: 0.0109735 seconds
+CruzID: ashen7
+Running INTERNAL RadixServer on port 10160 with 12 cores
+Running STUDENT  RadixClient
+****** get out of for &l : list NOW.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+****** after recvfrom. val of n = 524
+****** end of do-while loop.
+****** right before recvfrom.
+TIMEOUT after 30 seconds!
+
+             Extreme:    0/14     0.0%
+

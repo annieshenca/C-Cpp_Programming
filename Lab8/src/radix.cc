@@ -25,27 +25,27 @@
 void error(const char* s){fprintf(stderr,"ERROR: %s\n",s);}
 
 
-// void ParallelRadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists, const unsigned int cores) {
-//     std::vector<std::thread*> threads;
-//     unsigned int num_threads = 0;
-//     // Iterating through the vectors in the vector
-//     for(std::vector<unsigned int> &list : lists) {
-//         // sort( vec.data(), vec.size() );
-//         threads.push_back(new std::thread{[&list] {
-//             std::sort(list.begin(), list.end(), [](const unsigned int &a, const unsigned int &b) {
-//                 return std::to_string(a).compare(std::to_string(b)) < 0;
-//             });
-//         }});
-//         num_threads++;
-//
-//         if (threads.size() == cores || num_threads == lists.size()) {
-//             for (std::thread *thread : threads) {
-//                 thread->join();
-//             }
-//             threads.clear();
-//         }
-//     }
-// }
+void ParallelRadixSort::msd(std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists, const unsigned int cores) {
+    std::vector<std::thread*> threads;
+    unsigned int num_threads = 0;
+    // Iterating through the vectors in the vector
+    for(std::vector<unsigned int> &list : lists) {
+        // sort( vec.data(), vec.size() );
+        threads.push_back(new std::thread{[&list] {
+            std::sort(list.begin(), list.end(), [](const unsigned int &a, const unsigned int &b) {
+                return std::to_string(a).compare(std::to_string(b)) < 0;
+            });
+        }});
+        num_threads++;
+
+        if (threads.size() == cores || num_threads == lists.size()) {
+            for (std::thread *thread : threads) {
+                thread->join();
+            }
+            threads.clear();
+        }
+    }
+}
 
 
 /*
@@ -205,25 +205,31 @@ void RadixClient::msd(const char *hostname, const int port, std::vector<std::ref
         do {
             printf("****** right before recvfrom.\n");
             n = recvfrom(sockfd, (void*)&msg, sizeof(Message), 0, (struct sockaddr *) &serv_addr, &len);
-            // if (n < 0) exit(-1);;
+            if (n < 0) exit(-1);;
             printf("****** after recvfrom. val of n = %d\n", n);
+
             for (unsigned int &l : msg.values) {
+                l = ntohl(l);
                 // printf("number after recv: %d\n", l);
                 list.push_back(l);
             }
+            msg.num_values = ntohl(msg.num_values);
+            msg.sequence = ntohl(msg.sequence);
+            msg.flag = ntohl(msg.flag);
             printf("****** end of do-while loop.\n");
         } while (msg.flag == NONE);
 
         printf("****** exited the whole do-while loop.\n");
         // Once out of do-while loop, the last datagram would be the one with flag == 1.
-        n = recvfrom(sockfd, (void*)&msg, sizeof(Message), 0, (struct sockaddr *) &serv_addr, &len);
-        if (n < 0) exit(-1);
-        for (unsigned int &l : msg.values) {
-            list.push_back(l);
-        }
+        // n = recvfrom(sockfd, (void*)&msg, sizeof(Message), 0, (struct sockaddr *) &serv_addr, &len);
+        // if (n < 0) exit(-1);
+        // for (unsigned int &l : msg.values) {
+        //     l = ntohl(l);
+        //     // printf("number after recv: %d\n", l);
+        //     list.push_back(l);
+        // }
 
     }
-
     close(sockfd);
 }
 

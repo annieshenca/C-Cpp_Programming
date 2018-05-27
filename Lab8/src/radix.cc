@@ -66,8 +66,61 @@ void RadixServer::start(const int port, const unsigned int cores) {
     //
     // if (bind(sockfd, (struct sockaddr *) &server_addr, sizeof(server_addr)) < 0)
     //     exit(-1);
+    //
+    // int n = 0;
+    // Message msg;
+    // std::vector<unsigned int> list;
+    //
+    // while (true) {
+    //     n = recvfrom(sockfd, (void*)&msg, sizeof(msg), 0, (struct sockaddr *) &serv_addr, &len);
+    //     if (n < 0) exit(-1);
+    //
+    //     // For each number in this datagram, push all of numbers into the list.
+    //     for (unsigned int &l : msg.values) {
+    //         list.push_back(l);
+    //     }
+    //
+    //     if (msg.flag == LAST) {
+    //
+    //     }
+    // }
 }
 
+
+
+/*
+Message msg
+vector list
+
+while true {
+    rcv(msg)
+    for (each number in msg.values) {
+        list.push_back(number)
+    }
+    if (msg.flag == LAST) {
+        sort(list)
+        msg.num_values = 0
+        msg.sequence = 0
+        msg.flag = NONE
+
+        for (each number in list) {
+            msg.values[msg.num_values++] = number
+            if (msg.num_values == MAX_VALUES) {
+                send(msg)
+                msg.sequence++
+                msg.num_values = 0
+            }
+        }
+        msg.flag = LAST
+        send(msg)
+        list.clear()
+    }
+}
+*/
+
+
+
+/*****************************************************************************/
 
 /*
  * Shutdown the server. Typically this will involve closing the server socket.
@@ -94,7 +147,6 @@ void RadixClient::msd(const char *hostname, const int port, std::vector<std::ref
     bzero((char *) &serv_addr, sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
     bcopy((char *)server->h_addr, (char *)&serv_addr.sin_addr.s_addr, server->h_length);
-
     serv_addr.sin_port = htons(port);
 
     if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0) exit(-1);
@@ -103,42 +155,33 @@ void RadixClient::msd(const char *hostname, const int port, std::vector<std::ref
     Message msg;
     for (std::vector<unsigned int> &list: lists) {
         int n = 0;
-        //unsigned int wire = 0;
-        // unsigned int temp[];
-        // Init msg's properties.
         msg.num_values = 0;
         msg.sequence = 0;
         msg.flag = NONE; // 0 stands for NONE.
 
-        // For each number in list of lists
-        // for (unsigned int i = 0; i < sizeof(list); i++) {
         for (unsigned int &l : list) {
-            msg.values[msg.num_values] = l;
-            printf("val of l: %d\n", l);
-            printf("msg.valu: %d\n", msg.values[msg.num_values]);
-            msg.num_values++;
-
+            msg.values[msg.num_values++] = l;
             if (msg.num_values == MAX_VALUES) {
+                //Right before sending, change all of msg's struct to htonl()!
+
+
+
                 // try sizeof(wire) if this does not work.
-                n = sendto(sockfd, (void*)&msg, sizeof(msg), 0, (struct sockaddr *) &serv_addr, len);
+                n = sendto(sockfd, (void*)&msg, sizeof(Message), 0, (struct sockaddr *) &serv_addr, len);
                 if (n < 0) exit(-1);
                 msg.sequence++;
                 msg.num_values = 0;
             }
-
         }
         msg.flag = LAST; // Indicating this is the last datagram being sent
-        n = sendto(sockfd, (void*)&msg, sizeof(msg), 0, (struct sockaddr *) &serv_addr, len);
+         n = sendto(sockfd, (void*)&msg, sizeof(Message), 0, (struct sockaddr *) &serv_addr, len);
         if (n < 0) exit(-1);
         list.clear();
 
-        printf("****** done sending all.\n");
-
-        //Message recvmsg;
         do {
             printf("****** right before recvfrom.\n");
-            n = recvfrom(sockfd, (void*)&msg, sizeof(msg), 0, (struct sockaddr *) &serv_addr, &len);
-            if (n < 0) exit(-1);
+            n = recvfrom(sockfd, (void*)&msg, sizeof(Message), 0, (struct sockaddr *) &serv_addr, &len);
+            // if (n < 0) exit(-1);;
             printf("****** after recvfrom. val of n = %d\n", n);
             for (unsigned int &l : msg.values) {
                 // printf("number after recv: %d\n", l);
@@ -149,7 +192,7 @@ void RadixClient::msd(const char *hostname, const int port, std::vector<std::ref
 
         printf("****** exited the whole do-while loop.\n");
         // Once out of do-while loop, the last datagram would be the one with flag == 1.
-        n = recvfrom(sockfd, (void*)&msg, sizeof(msg), 0, (struct sockaddr *) &serv_addr, &len);
+        n = recvfrom(sockfd, (void*)&msg, sizeof(Message), 0, (struct sockaddr *) &serv_addr, &len);
         if (n < 0) exit(-1);
         for (unsigned int &l : msg.values) {
             list.push_back(l);
@@ -160,31 +203,30 @@ void RadixClient::msd(const char *hostname, const int port, std::vector<std::ref
     close(sockfd);
 }
 
-/*
-Message msg
-
-for (each list in lists) {
-    msg.num_values = 0
-    msg.sequence = 0
-    msg.flag = NONE
-
-    for (each number in list) {
-        msg.values[msg.num_values++] = number
-        if (msg.num_values == MAX_VALUES) {
-            send(msg)
-            msg.sequence++
-            msg.num_values = 0
-        }
-    }
-    msg.flag = LAST
-    send(msg)
-
-    list.clear()
-    do {
-        rcv(msg)
-        for (each number in msg.values) {
-            list.push_back(number)
-        }
-    } while (msg.flag == NONE)
-}
-*/
+//
+// Message msg
+//
+// for (each list in lists) {
+//     msg.num_values = 0
+//     msg.sequence = 0
+//     msg.flag = NONE
+//
+//     for (each number in list) {
+//         msg.values[msg.num_values++] = number
+//         if (msg.num_values == MAX_VALUES) {
+//             send(msg)
+//             msg.sequence++
+//             msg.num_values = 0
+//         }
+//     }
+//     msg.flag = LAST
+//     send(msg)
+//
+//     list.clear()
+//     do {
+//         rcv(msg)
+//         for (each number in msg.values) {
+//             list.push_back(number)
+//         }
+//     } while (msg.flag == NONE)
+// }

@@ -1,4 +1,5 @@
 Numbers: 1,000 Lists: 1 Cores: 12 Resends: FALSE Lasts: FALSE
 Generating 1,000 random numbers... 
 Generating expected results... 
-Generate time: 0.00809764 seconds
+Generate time: 0.0055918 seconds
+C

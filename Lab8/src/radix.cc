@@ -137,46 +137,70 @@ void RadixServer::stop() {
  * via LISTS.
  */
 void RadixClient::msd(const char *hostname, const int port, std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists) {
+    // Datagram and sockets set up!
     int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sockfd < 0) error("open");
-
     struct hostent *server = gethostbyname(hostname);
     if (server == NULL) exit(-1);
-
     struct sockaddr_in serv_addr;
     bzero((char *) &serv_addr, sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
     bcopy((char *)server->h_addr, (char *)&serv_addr.sin_addr.s_addr, server->h_length);
     serv_addr.sin_port = htons(port);
-
     if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0) exit(-1);
     socklen_t len = sizeof(serv_addr);
 
+    /* Client sending and receiving! */
     Message msg;
     for (std::vector<unsigned int> &list: lists) {
         int n = 0;
+        unsigned int backup = 0;
         msg.num_values = 0;
         msg.sequence = 0;
-        msg.flag = NONE; // 0 stands for NONE.
+        msg.flag = NONE;
 
+        // For each number l in this current list.
         for (unsigned int &l : list) {
+            // Set current number into msg.values array until a datagram is full.
             msg.values[msg.num_values++] = l;
             if (msg.num_values == MAX_VALUES) {
+                backup = msg.sequence;
+
                 //Right before sending, change all of msg's struct to htonl()!
+                for (unsigned int &num : msg.values) {
+                    num = htonl(num);
+                }
+                msg.num_values = htonl(msg.num_values);
+                msg.sequence = htonl(msg.sequence);
+                msg.flag = htonl(msg.flag);
 
-
-
-                // try sizeof(wire) if this does not work.
+                // Send the datagram!
                 n = sendto(sockfd, (void*)&msg, sizeof(Message), 0, (struct sockaddr *) &serv_addr, len);
                 if (n < 0) exit(-1);
-                msg.sequence++;
+
+                // variables update
+                msg.sequence = backup + 1;
+                // msg.sequence++;
                 msg.num_values = 0;
             }
         }
-        msg.flag = LAST; // Indicating this is the last datagram being sent
-         n = sendto(sockfd, (void*)&msg, sizeof(Message), 0, (struct sockaddr *) &serv_addr, len);
+
+        printf("****** get out of for &l : list NOW.\n");
+        msg.flag = LAST; // Indicating this is the last datagram being sent.
+
+        // Covert to Network byte order one last time.
+        for (unsigned int &num : msg.values) {
+            num = htonl(num);
+        }
+        msg.num_values = htonl(msg.num_values);
+        msg.sequence = htonl(msg.sequence);
+        msg.flag = htonl(msg.flag);
+
+        n = sendto(sockfd, (void*)&msg, sizeof(Message), 0, (struct sockaddr *) &serv_addr, len);
         if (n < 0) exit(-1);
         list.clear();
+
+
 
         do {
             printf("****** right before recvfrom.\n");

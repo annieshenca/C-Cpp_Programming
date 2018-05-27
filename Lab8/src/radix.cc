@@ -70,7 +70,6 @@ void radixSort(std::vector<unsigned int> &list) {
 void RadixServer::start(const int port, const unsigned int cores) {
     int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sockfd < 0) exit(-1);
-
     struct sockaddr_in serv_addr;
     bzero((char *) &serv_addr, sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
@@ -78,7 +77,6 @@ void RadixServer::start(const int port, const unsigned int cores) {
     serv_addr.sin_port = htons(port);
     if (bind(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0)
         exit(-1);
-
     struct sockaddr_in remote_addr;
     socklen_t len = sizeof(remote_addr);
 
@@ -92,21 +90,22 @@ void RadixServer::start(const int port, const unsigned int cores) {
         n = recvfrom(sockfd, (void*)&msg, sizeof(Message), 0, (struct sockaddr *) &remote_addr, &len);
         if (n < 0) exit(-1);
 
-        // For each number in this datagram, push all of numbers into the list.
-        for (unsigned int &n : msg.values) {
-            n = ntohl(n);
-            //printf("****** num recved: %d\n", n);
-            list.push_back(n);
-        }
-        printf("****** out of for loop.\n");
         msg.num_values = ntohl(msg.num_values);
         msg.sequence = ntohl(msg.sequence);
         msg.flag = ntohl(msg.flag);
+        // For each number in this datagram, push all of numbers into the list.
+        for (unsigned int i = 0; i < msg.num_values; i++) {
+            msg.values[i] = ntohl(msg.values[i]);
+            list.push_back(msg.values[i]);
+        }
 
 
         // Once server receives the last datagram, start processing the list now.
         if (msg.flag == LAST) {
+            // Call sorting algorithm on the received list numbers.
             radixSort(list);
+
+            // Start sending the result list back to client.
             msg.num_values = 0;
             msg.sequence = 0;
             msg.flag = NONE;
@@ -227,12 +226,6 @@ void RadixClient::msd(const char *hostname, const int port, std::vector<std::ref
         msg.sequence = 0;
         msg.flag = NONE;
 
-
-        for (unsigned int &i : list) {
-            printf("****** list sending: %u\n", i);
-        }
-
-
         // For each number l in this current list.
         for (unsigned int &l : list) {
             // Set current number into msg.values array until a datagram is full.
@@ -280,12 +273,6 @@ void RadixClient::msd(const char *hostname, const int port, std::vector<std::ref
                 l = ntohl(l);
                 list.push_back(l);
             }
-
-
-            for (unsigned int &i : list) {
-                printf("****** list received: %u\n", i);
-            }
-
 
             msg.num_values = ntohl(msg.num_values);
             msg.sequence = ntohl(msg.sequence);

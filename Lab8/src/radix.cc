@@ -151,37 +151,6 @@ void RadixServer::start(const int port, const unsigned int cores) {
 }
 
 
-/*
-1. Message msg
-2. vector list
-3.
-4. while true {
-5. rcv(msg)
-6. for (each number in msg.values) {
-7. list.push_back(number)
-8. }
-9. if (msg.flag == LAST) {
-10. sort(list)
-11. msg.num_values = 0
-12. msg.sequence = 0
-13. msg.flag = NONE
-14.
-15. for (each number in list) {
-16. msg.values[msg.num_values++] = number
-17. if (msg.num_values == MAX_VALUES) {
-18. send(msg)
-19. msg.sequence++
-20. msg.num_values = 0
-21. }
-22. }
-23. msg.flag = LAST
-24. send(msg)
-25. list.clear()
-26. }
-27. }
-*/
-
-
 /*****************************************************************************/
 /*****************************************************************************/
 
@@ -254,21 +223,22 @@ void RadixClient::msd(const char *hostname, const int port, std::vector<std::ref
         send_msg.flag = LAST; // Indicating this is the last datagram being sent.
 
         // Covert to Network byte order one last time.
-        for (unsigned int &num : send_msg.values) {
-            num = htonl(num);
-        }
+        for (unsigned int &num : send_msg.values) {num = htonl(num);}
+        unsigned int backup_send_seq = send_msg.sequence;
+
         send_msg.num_values = htonl(send_msg.num_values);
         send_msg.sequence = htonl(send_msg.sequence);
         send_msg.flag = htonl(send_msg.flag);
-
         n = sendto(sockfd, (void*)&send_msg, sizeof(Message), 0, (struct sockaddr *) &serv_addr, len);
         if (n < 0) exit(-1);
         list.clear();
 
+        backup_send_seq++;
 
         // Receiving msg back from server!
         Message recv_msg;
-        //int t = 0;
+        std::vector<unsigned int> arr; // Create an empty list for seq.
+
         do {
             n = recvfrom(sockfd, (void*)&recv_msg, sizeof(Message), 0, (struct sockaddr *) &serv_addr, &len);
             if (n < 0) exit(-1);;
@@ -277,33 +247,68 @@ void RadixClient::msd(const char *hostname, const int port, std::vector<std::ref
             recv_msg.sequence = ntohl(recv_msg.sequence);
             recv_msg.flag = ntohl(recv_msg.flag);
 
-            printf("val of flag: %u\n", recv_msg.flag);
-
-            if (recv_msg.flag == RESEND) {
-                printf("****** outside do-while in flag==RESEND loop.\n");
-                break;
-            }
+            // Knowing what seq I receive. For checking lost datagrams later.
+            arr.push_back(recv_msg.sequence);
 
             for (unsigned int &l : recv_msg.values) {
                 l = ntohl(l);
                 list.push_back(l);
             }
+
             //t = select(sockfd, (fd_set *)0, &write_mask, (fd_set *)0, &tv);
         } while (recv_msg.flag == NONE);
 
+        printf("***  back up send seq: %u\n", backup_send_seq);
+        printf("*** recv_msg.sequence: %u\n", recv_msg.sequence);
+        // int o =0;
+        // for (unsigned int &h : arr) {
+        //     printf("i: %i & h: %u\n", o++, h);
+        // }
 
-        // Get here if msg is having missing datagram problems.
-        // recv_msg should contain info of what the server needs!
-        //if (recv_msg.flag == RESEND) {
-            // printf("****** outside do-while in flag==RESEND loop.\n");
-            // for (unsigned int i = 0; i < recv_msg.num_values; i++) {
-            //
-            //
-            //     n = sendto(sockfd, (void*)&recv_msg, sizeof(Message), 0, (struct sockaddr *) &serv_addr, len);
-            //     if (n < 0) exit(-1);
-            //     recv_msg.values[i]; // Gives me the sequence num I need to resend
-            // }
-        //}
+        // Meaning if Server missed a datagram.
+        // Figure out which sequence client is missing, send a datagram requesting
+        // a RESEND on that specific datagram.
+        if (backup_send_seq != recv_msg.sequence) {
+            unsigned i = 0;
+            for (unsigned int &a : arr) {
+                if (i != a) {
+                    // NOW I know i is the seq number I'm missing!!!
+                    // So! send SERVER a datagram with RESEND and an empty LAST.
+                    send_msg.num_values = 1;
+                    send_msg.num_values = htonl(send_msg.num_values);
+                    send_msg.sequence = i;
+                    send_msg.sequence = htonl(send_msg.sequence);
+                    send_msg.flag = RESEND;
+                    send_msg.flag = htonl(send_msg.flag);
+                    // send_msg.values[0] = i;
+                    send_msg.values[0] = htonl(i);
+                    n = sendto(sockfd, (void*)&send_msg, sizeof(Message), 0, (struct sockaddr *) &serv_addr, len);
+                    if (n < 0) exit(-1);
+                    i = a+1;
+                }
+            }
+
+
+            // New list for saving the old list to be able to add in the new seq.
+            std::vector<unsigned int> backup_list;
+            for (unsigned int &s : list) { backup_list.push_back(s); }
+            list.clear();
+
+            do {
+                printf("&&&&&&&&&&&&&&&\n");
+                n = recvfrom(sockfd, (void*)&recv_msg, sizeof(Message), 0, (struct sockaddr *) &serv_addr, &len);
+                if (n < 0) exit(-1);;
+                recv_msg.flag = ntohl(recv_msg.flag);
+                for (unsigned int &r : recv_msg.values) {
+                    r = ntohl(r);
+                    list.push_back(r);
+                }
+            } while (recv_msg.flag == NONE);
+
+            for (unsigned int &q : backup_list) { list.push_back(q); }
+        }
+
+        //DONE>!>!>?!??!
 
     } // End of for list in lists
     close(sockfd);

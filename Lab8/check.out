@@ -1,53 +1,109 @@
 Numbers: 1,000 Lists: 1 Cores: 12 Resends: FALSE Lasts: FALSE
 Generating 1,000 random numbers... 
 Generating expected results... 
-Generate time: 0.00506461 seconds
+Generate time: 0.00399531 seconds
 CruzID: ashen7
 Running INTERNAL RadixServer on port 10160 with 12 cores
 Running STUDENT  RadixClient
-Elapsed time: 0.005955 seconds
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 1
+Elapsed time: 0.007238 seconds
 Comparing results... 
 List 0 PASS
 Numbers: 1,000 Lists: 1 Cores: 12 Resends: FALSE Lasts: FALSE
 Generating 1,000 random numbers... 
 Generating expected results... 
-Generate time: 0.006377 seconds
+Generate time: 0.006586 seconds
 CruzID: ashen7
 Running STUDENT  RadixServer on port 10161 with 12 cores
 Running INTERNAL RadixClient
-Elapsed time: 0.210808 seconds
+Elapsed time: 0.210833 seconds
 Comparing results... 
 List 0 PASS
 Numbers: 1,000 Lists: 2 Cores: 12 Resends: FALSE Lasts: FALSE
 Generating 2,000 random numbers... 
 Generating expected results... 
-Generate time: 0.0061574 seconds
+Generate time: 0.00654644 seconds
 CruzID: ashen7
 Running INTERNAL RadixServer on port 10160 with 12 cores
 Running STUDENT  RadixClient
-Elapsed time: 0.010799 seconds
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 1
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 1
+Elapsed time: 0.012091 seconds
 Comparing results... 
 List 0 PASS
 List 1 PASS
 Numbers: 1,000 Lists: 2 Cores: 12 Resends: FALSE Lasts: FALSE
 Generating 2,000 random numbers... 
 Generating expected results... 
-Generate time: 0.007591 seconds
+Generate time: 0.006498 seconds
 CruzID: ashen7
 Running STUDENT  RadixServer on port 10161 with 12 cores
 Running INTERNAL RadixClient
-Elapsed time: 0.421186 seconds
+Elapsed time: 0.421114 seconds
 Comparing results... 
 List 0 PASS
 List 1 PASS
 Numbers: 1,000 Lists: 4 Cores: 12 Resends: FALSE Lasts: FALSE
 Generating 4,000 random numbers... 
 Generating expected results... 
-Generate time: 0.00787346 seconds
+Generate time: 0.00757943 seconds
 CruzID: ashen7
 Running INTERNAL RadixServer on port 10160 with 12 cores
 Running STUDENT  RadixClient
-Elapsed time: 0.025359 seconds
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 1
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 1
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 1
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 1
+Elapsed time: 0.024945 seconds
 Comparing results... 
 List 0 PASS
 List 1 PASS
@@ -56,11 +112,11 @@ List 3 PASS
 Numbers: 1,000 Lists: 4 Cores: 12 Resends: FALSE Lasts: FALSE
 Generating 4,000 random numbers... 
 Generating expected results... 
-Generate time: 0.009274 seconds
+Generate time: 0.005903 seconds
 CruzID: ashen7
 Running STUDENT  RadixServer on port 10161 with 12 cores
 Running INTERNAL RadixClient
-Elapsed time: 0.841932 seconds
+Elapsed time: 0.845115 seconds
 Comparing results... 
 List 0 PASS
 List 1 PASS
@@ -72,53 +128,106 @@ List 3 PASS
 Numbers: 1,000 Lists: 1 Cores: 12 Resends: TRUE Lasts: FALSE
 Generating 1,000 random numbers... 
 Generating expected results... 
-Generate time: 0.00481369 seconds
+Generate time: 0.00464938 seconds
 CruzID: ashen7
 Running INTERNAL RadixServer on port 10160 with 12 cores
 Running STUDENT  RadixClient
-Elapsed time: 0.007323 seconds
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 1
+Elapsed time: 0.007570 seconds
 Comparing results... 
 List 0 FAIL
 Numbers: 1,000 Lists: 1 Cores: 12 Resends: TRUE Lasts: FALSE
 Generating 1,000 random numbers... 
 Generating expected results... 
-Generate time: 0.005505 seconds
+Generate time: 0.006888 seconds
 CruzID: ashen7
 Running STUDENT  RadixServer on port 10161 with 12 cores
 Running INTERNAL RadixClient
-Elapsed time: 0.210751 seconds
+Elapsed time: 0.210810 seconds
 Comparing results... 
 List 0 FAIL
 Numbers: 1,000 Lists: 2 Cores: 12 Resends: TRUE Lasts: FALSE
 Generating 2,000 random numbers... 
 Generating expected results... 
-Generate time: 0.0070043 seconds
+Generate time: 0.00458056 seconds
 CruzID: ashen7
 Running INTERNAL RadixServer on port 10160 with 12 cores
 Running STUDENT  RadixClient
-Elapsed time: 0.012163 seconds
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 1
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 1
+Elapsed time: 0.012728 seconds
 Comparing results... 
 List 0 FAIL
 List 1 PASS
 Numbers: 1,000 Lists: 2 Cores: 12 Resends: TRUE Lasts: FALSE
 Generating 2,000 random numbers... 
 Generating expected results... 
-Generate time: 0.007706 seconds
+Generate time: 0.008453 seconds
 CruzID: ashen7
 Running STUDENT  RadixServer on port 10161 with 12 cores
 Running INTERNAL RadixClient
-Elapsed time: 0.423466 seconds
+Elapsed time: 0.422059 seconds
 Comparing results... 
 List 0 FAIL
 List 1 PASS
 Numbers: 1,000 Lists: 4 Cores: 12 Resends: TRUE Lasts: FALSE
 Generating 4,000 random numbers... 
 Generating expected results... 
-Generate time: 0.00912087 seconds
+Generate time: 0.00988866 seconds
 CruzID: ashen7
 Running INTERNAL RadixServer on port 10160 with 12 cores
 Running STUDENT  RadixClient
-Elapsed time: 0.024265 seconds
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 1
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 1
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 1
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 0
+val of flag: 1
+Elapsed time: 0.029448 seconds
 Comparing results... 
 List 0 FAIL
 List 1 PASS
@@ -127,11 +236,11 @@ List 3 PASS
 Numbers: 1,000 Lists: 4 Cores: 12 Resends: TRUE Lasts: FALSE
 Generating 4,000 random numbers... 
 Generating expected results... 
-Generate time: 0.007147 seconds
+Generate time: 0.008853 seconds
 CruzID: ashen7
 Running STUDENT  RadixServer on port 10161 with 12 cores
 Running INTERNAL RadixClient
-Elapsed time: 0.841932 seconds
+Elapsed time: 0.841834 seconds
 Comparing results... 
 List 0 FAIL
 List 1 PASS
@@ -143,54 +252,7 @@ List 3 PASS
 Numbers: 1,000 Lists: 1 Cores: 12 Resends: FALSE Lasts: TRUE
 Generating 1,000 random numbers... 
 Generating expected results... 
-Generate time: 0.0047431 seconds
+Generate time: 0.00578934 seconds
 CruzID: ashen7
 Running INTERNAL RadixServer on port 10160 with 12 cores
 Running STUDENT  RadixClient
-TIMEOUT after 30 seconds!
-Numbers: 1,000 Lists: 2 Cores: 12 Resends: FALSE Lasts: TRUE
-Generating 2,000 random numbers... 
-Generating expected results... 
-Generate time: 0.00682256 seconds
-CruzID: ashen7
-Running INTERNAL RadixServer on port 10160 with 12 cores
-Running STUDENT  RadixClient
-TIMEOUT after 30 seconds!
-Numbers: 1,000 Lists: 4 Cores: 12 Resends: FALSE Lasts: TRUE
-Generating 4,000 random numbers... 
-Generating expected results... 
-Generate time: 0.00919035 seconds
-CruzID: ashen7
-Running INTERNAL RadixServer on port 10160 with 12 cores
-Running STUDENT  RadixClient
-TIMEOUT after 30 seconds!
-
-             Stretch:    0/14     0.0%
-
-Numbers: 1,000 Lists: 1 Cores: 12 Resends: TRUE Lasts: TRUE
-Generating 1,000 random numbers... 
-Generating expected results... 
-Generate time: 0.00372746 seconds
-CruzID: ashen7
-Running INTERNAL RadixServer on port 10160 with 12 cores
-Running STUDENT  RadixClient
-TIMEOUT after 30 seconds!
-Numbers: 1,000 Lists: 2 Cores: 12 Resends: TRUE Lasts: TRUE
-Generating 2,000 random numbers... 
-Generating expected results... 
-Generate time: 0.00363919 seconds
-CruzID: ashen7
-Running INTERNAL RadixServer on port 10160 with 12 cores
-Running STUDENT  RadixClient
-TIMEOUT after 30 seconds!
-Numbers: 1,000 Lists: 4 Cores: 12 Resends: TRUE Lasts: TRUE
-Generating 4,000 random numbers... 
-Generating expected results... 
-Generate time: 0.00830897 seconds
-CruzID: ashen7
-Running INTERNAL RadixServer on port 10160 with 12 cores
-Running STUDENT  RadixClient
-TIMEOUT after 30 seconds!
-
-             Extreme:    0/14     0.0%
-

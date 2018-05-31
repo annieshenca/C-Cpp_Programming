@@ -61,7 +61,7 @@ void send (Message *m) {
     memset(&multicastAddr, 0, sizeof(multicastAddr));
     multicastAddr.sin_family = AF_INET;
     multicastAddr.sin_addr.s_addr = inet_addr("224.0.0.1");
-    multicastAddr.sin_port = htons(port);
+    multicastAddr.sin_port = htons(get_unicast_port());
 
     for (;;) {
         printf("Sending: %s\n", argv[2]);

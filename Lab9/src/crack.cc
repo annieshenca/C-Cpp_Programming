@@ -13,12 +13,14 @@
  * Sends out on multicast, receive on unicast
  */
 
+
 void error(const char* str) {
     fprintf(stderr, "ERROR: %s\n", str);
 }
 
+
 /*
- * MULTIcast Receiver
+ * MULTIcast UDP Receiver
  */
 void receive (Message *m) {
     int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
@@ -44,15 +46,39 @@ void receive (Message *m) {
 
 }
 
+
 /*
- * UNIcast Sender
+ * UNIcast TCP Sender
  */
 void send (Message *m) {
+    int port = atoi(argv[1]);
+    int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+    if (sockfd < 0) error("open");
+    int ttl = 1;
+    if (setsockopt(sockfd, IPPROTO_IP, IP_MULTICAST_TTL, (void *) &ttl, sizeof(ttl)) < 0)
+        error("setsockopt");
+    struct sockaddr_in multicastAddr;
+    memset(&multicastAddr, 0, sizeof(multicastAddr));
+    multicastAddr.sin_family = AF_INET;
+    multicastAddr.sin_addr.s_addr = inet_addr("224.0.0.1");
+    multicastAddr.sin_port = htons(port);
 
+    for (;;) {
+        printf("Sending: %s\n", argv[2]);
+        int n = sendto(sockfd,argv[2], strlen(argv[2]), 0,
+        (struct sockaddr *) &multicastAddr, sizeof(multicastAddr));
+        if (n < 0) error("write");
+        sleep(1);
+    }
+    close(sockfd);
 
 }
 
 
+void crack (Message *m) {
+    // Pass in hash const char hash and char passwd
+    //crack(hasn, passwd);
+}
 
 
 int main (int argc, char *argv[]) {

@@ -1,9 +1,22 @@
 // Annie Shen (ashen7@ucsc.edu)
-// CMPS 109 - Lab 9 Distributed Password Cracker
+// CMPS 109 - Lab 9 Password Cracker
 
-#include <cstdlib>
 #include <iostream>
-#include <string>
+#include <strings.h>
+#include <string.h>
+#include <thread>
+#include <algorithm>
+#include <vector>
+#include <chrono>
+#include <unistd.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <stdlib.h>
+#include <netdb.h>
+
 #include "crack.h"
 
 /*
@@ -20,7 +33,9 @@ void error(const char* str) {
 
 
 /*
- * MULTIcast UDP Receiver
+ * MULTIcast UDP Receiver.
+ * Received UDP msg from server, ntohl() the msg, get the msg ready for
+ * cracking the password.
  */
 void receive (Message *m) {
     int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
@@ -28,7 +43,7 @@ void receive (Message *m) {
     struct sockaddr_in server_addr;
     bzero((char *) &server_addr, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
-    server_addr.sin_port = htons(get_multicast_port());
+    server_addr.sin_port = htons( 8080 );
     if (bind(sockfd, (struct sockaddr *) &server_addr, sizeof(server_addr)) < 0)
         error("bind");
     struct ip_mreq multicastRequest;
@@ -38,9 +53,10 @@ void receive (Message *m) {
         error("setsockopt");
 
     for (;;) {
-        int n = recvfrom(sockfd, m,sizeof(Message),0,NULL,0);
+        int n = recvfrom(sockfd, (void*)&m,sizeof(Message),0,NULL,0);
         if (n < 0) error("read");
-        printf("Received: %s\n", m);
+        //printf("Received: %s\n", m->passwds);
+        printf("received\n");
     }
     close(sockfd);
 
@@ -50,6 +66,7 @@ void receive (Message *m) {
 /*
  * UNIcast TCP Sender
  */
+/*
 void send (Message *m) {
     int port = atoi(argv[1]);
     int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
@@ -72,22 +89,24 @@ void send (Message *m) {
     }
     close(sockfd);
 
-}
+}*/
 
-
+/*
 void crack (Message *m) {
     // Pass in hash const char hash and char passwd
-    //crack(hasn, passwd);
+    const char hash = '1';
+    passwd = 
+    crack(hasn, passwd);
 }
-
+*/
 
 int main (int argc, char *argv[]) {
     Message msg;
 
     while (true) {
         receive(&msg);
-        crack(&msg);
-        send(&msg);
+        //crack(&msg);
+        //send(&msg);
     }
 
     return 0;

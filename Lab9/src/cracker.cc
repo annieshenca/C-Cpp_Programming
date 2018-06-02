@@ -52,14 +52,19 @@ void receive (Message *m) {
     if (setsockopt(sockfd, IPPROTO_IP, IP_ADD_MEMBERSHIP, (void *) &multicastRequest, sizeof(multicastRequest)) < 0)
         error("setsockopt");
 
-    for (;;) {
+    printf("Listening...\n");
+
+    while (true) {
         int n = recvfrom(sockfd, (void*)&m,sizeof(Message),0,NULL,0);
         if (n < 0) error("read");
-        //printf("Received: %s\n", m->passwds);
-        printf("received\n");
+
+        // strings do not need to be converted
+        m->num_passwds = ntohl(m->num_passwds);
+        m->port = ntohl(m->port);
+
+        printf("Received: %d\n", m->port);
     }
     close(sockfd);
-
 }
 
 
@@ -91,21 +96,21 @@ void send (Message *m) {
 
 }*/
 
-/*
-void crack (Message *m) {
+
+void crackpwd (Message *m) {
+    printf("In crackpwd about to crack the password!\n");
     // Pass in hash const char hash and char passwd
-    const char hash = '1';
-    passwd = 
-    crack(hasn, passwd);
+    //const char hash = '1';
+    //crack(&hash, m->passwds);
 }
-*/
+
 
 int main (int argc, char *argv[]) {
     Message msg;
 
     while (true) {
         receive(&msg);
-        //crack(&msg);
+        crackpwd(&msg);
         //send(&msg);
     }
 

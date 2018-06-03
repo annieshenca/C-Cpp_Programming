@@ -12,19 +12,13 @@ CC = g++ -std=c++17
 
 SRC=$(wildcard src/*.cc)
 
-all: cracker server crack
-
-cracker: src/cracker.cc
-	g++ -std=c++17 -o cracker src/cracker.cc
-
-server: server.cc
-	g++ -std=c++17 -o server server.cc
+all: crack
 
 crack: $(SRC) crack.o
 	$(CC) -o $@ $^ $(CFLAGS)
 
 clean:
-	@rm crack cracker server
+	@rm crack
 
 submit: clean
 	@tar czvf ~/CMPS109-Lab9.tar.gz \

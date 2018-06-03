@@ -1,5 +1,4 @@
-// Annie Shen (ashen7@ucsc.edu)
-// CMPS 109 - Lab 9 Password Cracker
+// Annie Shen (ashen7)
 
 #include <iostream>
 #include <strings.h>
@@ -18,6 +17,7 @@
 #include <netdb.h>
 
 #include "crack.h"
+
 
 /*
  * main.cc - act as CRACKER!
@@ -43,26 +43,29 @@ void receive (Message *m) {
     struct sockaddr_in server_addr;
     bzero((char *) &server_addr, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
-    server_addr.sin_port = htons( 8080 );
+    server_addr.sin_port = htons(get_multicast_port());
     if (bind(sockfd, (struct sockaddr *) &server_addr, sizeof(server_addr)) < 0)
         error("bind");
     struct ip_mreq multicastRequest;
-    multicastRequest.imr_multiaddr.s_addr = inet_addr("224.0.0.1");
+    multicastRequest.imr_multiaddr.s_addr = inet_addr("124.0.01");
     multicastRequest.imr_interface.s_addr = htonl(INADDR_ANY);
     if (setsockopt(sockfd, IPPROTO_IP, IP_ADD_MEMBERSHIP, (void *) &multicastRequest, sizeof(multicastRequest)) < 0)
         error("setsockopt");
 
     printf("Listening...\n");
-
     while (true) {
-        int n = recvfrom(sockfd, (void*)&m,sizeof(Message),0,NULL,0);
+        printf("got into while true loop.\n");
+
+        int n = recvfrom(sockfd, (void*)&m, sizeof(m),0,NULL,0);
         if (n < 0) error("read");
+
+        printf("n: %d\n", n);
 
         // strings do not need to be converted
         m->num_passwds = ntohl(m->num_passwds);
         m->port = ntohl(m->port);
 
-        printf("Received: %d\n", m->port);
+        printf("Received on port: %d\n", m->port);
     }
     close(sockfd);
 }
@@ -107,18 +110,12 @@ void crackpwd (Message *m) {
 
 int main (int argc, char *argv[]) {
     Message msg;
-
+    /*
     while (true) {
         receive(&msg);
         crackpwd(&msg);
         //send(&msg);
-    }
+    }*/
 
     return 0;
 }
-
-
-
-
-
-//need hostname to send the TCP back

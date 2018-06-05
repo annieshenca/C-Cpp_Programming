@@ -17,7 +17,7 @@ var stack = [];
 //     console.log(",");
 // }
 
-console.log(args);
+console.log(args.length);
 // Create an event handler.
 // var hello = function () {
 //

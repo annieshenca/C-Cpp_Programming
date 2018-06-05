@@ -1,5 +1,5 @@
 
-Tue Jun  5 15:50:24 PDT 2018
+Tue Jun  5 15:58:46 PDT 2018
 
 FAIL 3 11 + : expected 14, got [ 3 11 +  ] 3 11 + ,
 FAIL 3 11 5 + - : expected -13, got [ 3 11 5 + -  ] 3 11 5 + - ,

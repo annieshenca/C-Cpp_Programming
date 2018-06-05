@@ -12,12 +12,11 @@ var args = process.argv.slice(2);
 var stack = [];
 
 // console.log(args);
-// for (var i = 0; i < args.length; i++) {
-//     console.log(args[i]);
-//     console.log(",");
-// }
+for (var i = 0; i < args.length; i++) {
+    stack.push(args[i]);
+}
 
-console.log(args.length);
+console.log(stack);
 // Create an event handler.
 // var hello = function () {
 //

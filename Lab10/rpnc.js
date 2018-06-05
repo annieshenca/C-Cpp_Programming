@@ -20,7 +20,7 @@ console.log(stack);
 
 
 for (var j = 0; j < stack.length; j++) {
-    console.log(stack[i]);
+    console.log(stack[j]);
     console.log(",");
 }
 // Create an event handler.

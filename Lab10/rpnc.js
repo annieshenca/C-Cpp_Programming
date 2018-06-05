@@ -17,6 +17,12 @@ for (var i = 0; i < args.length; i++) {
 }
 
 console.log(stack);
+
+
+for (var j = 0; j < stack.length; j++) {
+    console.log(stack[i]);
+    console.log(",");
+}
 // Create an event handler.
 // var hello = function () {
 //

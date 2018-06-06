@@ -7,7 +7,8 @@
 
 // process.argv[2] gives the command line argument for the calculations part.
 
-
+// splice then split
+// args.length need - 1
 var args = process.argv.slice(2);
 var stack = [];
 

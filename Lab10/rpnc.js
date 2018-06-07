@@ -5,41 +5,48 @@
  *
  */
 
-// process.argv[2] gives the command line argument for the calculations part.
+/*
+ * Sources:
+ * https://stackoverflow.com/questions/4351521/how-do-i-pass-command-line-arguments-to-a-nodejs-program
+ */
 
+
+
+// args.length need - 1
+var arr = (process.argv[2]).split(" ");
 var stack = [];
 
-var hi = "one two three four five";
-// splice then split
-// args.length need - 1
-// var arr = process.argv.slice(2);
-// var temp = arr.split(" ");
-// console.log(args);
-// console.log(temp);
-// for (var i = 0; i < arr.length; i++) {
-//     temp[i] = ++arr[i];
-// }
+// Length - 1 due to hte last " ".
+for (var i = 0; i < arr.length-1; i++) {
+    arr[i].toString();
 
-var hii = hi.split(" ");
-console.log(hii);
+    // If it IS a number, append push to stack!
+    if (isNaN(arr[i]) == false) {
+        stack.push(arr[i]);
+    }
 
-// console.log(args);
-// for (var i = 0; i < args.length; i++) {
-//     stack.push(args[i]);
-// }
-//
-// console.log(stack);
-//
-//
-// for (var j = 0; j < stack.length; j++) {
-//     console.log(stack[j]);
-//     console.log(",");
-// }
-// Create an event handler.
-// var hello = function () {
-//
-// }
+    // If it is NOT a number, do operations!
+    else {
+        var result = 0;
+        // Pop the stack to get the last two numbers.
+        var num2 = parseInt(stack.pop());
+        var num1 = parseInt(stack.pop());
 
-// process.argv.forEach(function (val, index, array) {
-//     console.log(index + ': ' + val);
-// });
+        // Consider all five different operants
+        if (arr[i] == "+") {
+            result = num1 + num2;
+        } else if (arr[i] == "-") {
+            result = num1 - num2;
+        } else if (arr[i] == "*") {
+            result = num1 * num2;
+        } else if (arr[i] == "/") {
+            result = num1 / num2;
+        } else {
+            result = Math.pow(num1, num2);
+        }
+
+        // Push in the result at the back of the stack.
+        stack.push(result);
+    }
+}
+console.log(stack[0]);

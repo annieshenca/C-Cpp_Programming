@@ -7,23 +7,34 @@
 
 // process.argv[2] gives the command line argument for the calculations part.
 
-// splice then split
-// args.length need - 1
-var args = process.argv.slice(2);
 var stack = [];
 
+var hi = "one two three four five";
+// splice then split
+// args.length need - 1
+// var arr = process.argv.slice(2);
+// var temp = arr.split(" ");
 // console.log(args);
-for (var i = 0; i < args.length; i++) {
-    stack.push(args[i]);
-}
+// console.log(temp);
+// for (var i = 0; i < arr.length; i++) {
+//     temp[i] = ++arr[i];
+// }
 
-console.log(stack);
+var hii = hi.split(" ");
+console.log(hii);
 
-
-for (var j = 0; j < stack.length; j++) {
-    console.log(stack[j]);
-    console.log(",");
-}
+// console.log(args);
+// for (var i = 0; i < args.length; i++) {
+//     stack.push(args[i]);
+// }
+//
+// console.log(stack);
+//
+//
+// for (var j = 0; j < stack.length; j++) {
+//     console.log(stack[j]);
+//     console.log(",");
+// }
 // Create an event handler.
 // var hello = function () {
 //
